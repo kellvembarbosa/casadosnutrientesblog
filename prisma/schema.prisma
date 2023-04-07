@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model category {
+  category_id       Int                 @id @default(autoincrement())
+  name              String              @db.VarChar(255)
+  slug              String?             @db.VarChar(45)
+  post_has_category post_has_category[]
+}
+
+model post {
+  idpost            Int                 @id @default(autoincrement())
+  title             String              @db.VarChar(45)
+  content           String              @db.MediumText
+  image             Bytes               @db.MediumBlob
+  ig_url            String?             @default("#") @db.VarChar(150)
+  kawai_url         String?             @default("#") @db.VarChar(150)
+  tiktok_url        String              @db.VarChar(150)
+  yt_url            String?             @default("#") @db.VarChar(150)
+  created_at        DateTime?           @default(now()) @db.Timestamp(0)
+  post_has_category post_has_category[]
+  post_has_tag      post_has_tag[]
+}
+
+model post_has_category {
+  post_idpost          Int
+  category_category_id Int
+  category             category @relation(fields: [category_category_id], references: [category_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_post_has_category_category1")
+  post                 post     @relation(fields: [post_idpost], references: [idpost], onDelete: NoAction, onUpdate: NoAction, map: "fk_post_has_category_post1")
+
+  @@id([post_idpost, category_category_id])
+  @@index([category_category_id], map: "fk_post_has_category_category1_idx")
+  @@index([post_idpost], map: "fk_post_has_category_post1_idx")
+}
+
+model post_has_tag {
+  post_idpost Int
+  tag_idtags  Int
+  post        post @relation(fields: [post_idpost], references: [idpost], onDelete: NoAction, onUpdate: NoAction, map: "fk_post_has_tag_post")
+  tag         tag  @relation(fields: [tag_idtags], references: [idtags], onDelete: NoAction, onUpdate: NoAction, map: "fk_post_has_tag_tag1")
+
+  @@id([post_idpost, tag_idtags])
+  @@index([post_idpost], map: "fk_post_has_tag_post_idx")
+  @@index([tag_idtags], map: "fk_post_has_tag_tag1_idx")
+}
+
+model tag {
+  idtags       Int            @id @default(autoincrement())
+  tag          String?        @db.VarChar(45)
+  slug         String?        @db.VarChar(45)
+  post_has_tag post_has_tag[]
+}
