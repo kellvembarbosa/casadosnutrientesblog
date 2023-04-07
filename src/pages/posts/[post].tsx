@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import Post from './components/Post';
+import Post from '../components/Post';
 
 const PostPage: NextPage = () => {
   return (
