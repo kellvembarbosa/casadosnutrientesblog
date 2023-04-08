@@ -1,5 +1,8 @@
 import { NextPage } from 'next';
 import Post from '../components/Post';
+import { GetServerSideProps } from 'next'
+import { post } from '@prisma/client';
+
 
 const PostPage: NextPage = () => {
   return (
@@ -21,5 +24,19 @@ const PostPage: NextPage = () => {
     </div>
   );
 };
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  // const posts = await fetcher('API');
+  const { params } = context
+  console.log(params);
+  
+  return {
+      props: {
+        content: 'context'
+      }
+  };
+}
 
 export default PostPage;

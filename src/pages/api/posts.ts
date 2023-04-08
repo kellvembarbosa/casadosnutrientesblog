@@ -4,7 +4,8 @@ import { post } from '@prisma/client'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
-  posts: post[]
+  posts: post[],
+  imagesSTR: string[]
 }
 
 export default async function handler(
@@ -15,7 +16,9 @@ export default async function handler(
     const posts = await prisma.post.findMany({
       take: 10
     })
-    res.status(200).json({ posts: posts })
+    const imagesSTR = posts.map(post => post.image).map(image => image.toString('base64'))
+
+    res.status(200).json({ posts: posts, imagesSTR: imagesSTR })
   } catch (error) {
     console.log(error)
   }
