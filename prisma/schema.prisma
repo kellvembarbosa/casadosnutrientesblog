@@ -24,7 +24,7 @@ model post {
   tiktok_url        String              @db.VarChar(150)
   yt_url            String?             @default("#") @db.VarChar(150)
   created_at        DateTime?           @default(now()) @db.Timestamp(0)
-  slug              String?             @db.VarChar(45)
+  slug              String              @unique(map: "slug_UNIQUE") @db.VarChar(45)
   post_has_category post_has_category[]
   post_has_tag      post_has_tag[]
 }

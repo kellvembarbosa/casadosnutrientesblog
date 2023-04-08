@@ -16,6 +16,7 @@ export default async function handler(
     const posts = await prisma.post.findMany({
       take: 10
     })
+    //Precisa fazer essa separação aqui, pois no cliente não é possível utilizar image.toString('base64')
     const imagesSTR = posts.map(post => post.image).map(image => image.toString('base64'))
 
     res.status(200).json({ posts: posts, imagesSTR: imagesSTR })
