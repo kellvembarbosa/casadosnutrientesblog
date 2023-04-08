@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Post from '../components/Post';
 import { GetServerSideProps } from 'next'
 import { post } from '@prisma/client';
@@ -42,7 +42,7 @@ const PostPage: NextPage<PropsPost> = ({resPostPage}) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context
 
   const resPostPage: Data = await fetcher(API, {
@@ -54,6 +54,26 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         resPostPage
       }
   };
+}
+
+
+
+
+
+
+
+type Dataa = {
+  posts: post[],
+}
+
+const fetcherr = (url: string) => fetch(url).then((res) => res.json());
+const APII = 'http://localhost:3000/api/posts'
+
+export const getStaticPaths: GetStaticPaths = async () =>{
+  const posts: Dataa = await fetcherr(APII);
+
+  const paths = posts.posts.map(post => ({params: {post: post.slug}}))
+  return { paths, fallback: false };
 }
 
 export default PostPage;

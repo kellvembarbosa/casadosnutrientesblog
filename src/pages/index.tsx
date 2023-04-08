@@ -76,7 +76,7 @@ const Blog: NextPage = (fallback) => {
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const API = 'http://localhost:3000/api/posts'
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const posts = await fetcher(API);
     return {
         props: {
@@ -86,5 +86,6 @@ export async function getStaticProps() {
         }
     };
 }
+
 
 export default Blog
