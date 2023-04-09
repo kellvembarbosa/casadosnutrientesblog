@@ -22,6 +22,7 @@ type PropsPost = {
   resPostPage: Data
 }
 
+// const PostPage: NextPage<PropsPost> = ({resPostPage}) --------> lembrança de como tava.
 
 const PostPage: NextPage<PropsPost> = () => {
   // const {post, imagesSTR} = resPostPage
@@ -46,19 +47,19 @@ const PostPage: NextPage<PropsPost> = () => {
   );
 };
 
-// export const getStaticProps: GetStaticProps = async (context) => {
-//   const { params } = context
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { params } = context
 
-//   const resPostPage: Data = await fetcher(API_POST, {
-//     slug: params!.post as string
-//   });
+  // const resPostPage: Data = await fetcher(API_POST, {
+  //   slug: params!.post as string
+  // });
 
-//   return {
-//       props: {
-//         resPostPage
-//       }
-//   };
-// }
+  return {
+      props: {
+        'resPostPage': 'teste'
+      }
+  };
+}
 
 
 
