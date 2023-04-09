@@ -7,7 +7,10 @@ import { API_POST, API_POSTS } from '@/utils/globalvars';
 const fetcher = (url: string, options: {
   'slug': string}) => fetch(url, {
   body: JSON.stringify(options),
-  method: 'POST'
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  }
 }).then((res) => res.json());
 
 
@@ -70,7 +73,12 @@ type Dataa = {
   posts: post[],
 }
 
-const fetcherr = (url: string) => fetch(url).then((res) => res.json());
+const fetcherr = (url: string) => fetch(url, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+}).then((res) => res.json());
 
 export const getStaticPaths: GetStaticPaths = async () =>{
   const posts: Dataa = await fetcherr(API_POSTS);
