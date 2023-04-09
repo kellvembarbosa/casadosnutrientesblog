@@ -24,3 +24,9 @@ export default async function handler(
     console.log(error)
   }
 }
+
+// export const config = {
+//   api: {
+//     responseLimit: '128kb',
+//   },
+// }

@@ -22,17 +22,17 @@ type PropsPost = {
   resPostPage: Data
 }
 
-
-const PostPage: NextPage<PropsPost> = ({resPostPage}) => {
-  const {post, imagesSTR} = resPostPage
-  const router = useRouter()
-  if (router.isFallback) {
-    return <div>Loading...</div>
-  }
+// const PostPage: NextPage<PropsPost> = ({resPostPage}) 
+const PostPage: NextPage<PropsPost> = () => {
+  // const {post, imagesSTR} = resPostPage
+  // const router = useRouter()
+  // if (router.isFallback) {
+  //   return <div>Loading...</div>
+  // }
 
   return (
     <div>
-      <Post
+      {/* <Post
         title= {post.title}
         content= {post.content}
         imageUrl= {imagesSTR}
@@ -41,7 +41,7 @@ const PostPage: NextPage<PropsPost> = ({resPostPage}) => {
         tiktokLink= {post.tiktok_url}
         youtubeLink= {post.yt_url ?? '#'}
         createdAt= {new Date(post.created_at ?? '').toLocaleDateString()}
-      />
+      /> */}
     </div>
   );
 };
@@ -49,13 +49,13 @@ const PostPage: NextPage<PropsPost> = ({resPostPage}) => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context
 
-  const resPostPage: Data = await fetcher(API_POST, {
-    slug: params!.post as string
-  });
+  // const resPostPage: Data = await fetcher(API_POST, {
+  //   slug: params!.post as string
+  // });
 
   return {
       props: {
-        resPostPage
+        'resPostPage': ''
       }
   };
 }
@@ -72,14 +72,14 @@ type Dataa = {
 
 const fetcherr = (url: string) => fetch(url).then((res) => res.json());
 
-// export const getStaticPaths: GetStaticPaths = async () =>{
-//   const posts: Dataa = await fetcherr(API_POSTS);
+export const getStaticPaths: GetStaticPaths = async () =>{
+  const posts: Dataa = await fetcherr(API_POSTS);
 
-//   const paths = posts.posts.map(post => ({
-//     params: { post: post.slug }
-//   }))
+  const paths = posts.posts.map(post => ({
+    params: { post: post.slug }
+  }))
   
-//   return { paths, fallback: false };
-// }
+  return { paths, fallback: false };
+}
 
 export default PostPage;
