@@ -74,7 +74,12 @@ const Blog: NextPage = (fallback) => {
     )
 }
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+const fetcher = (url: string) => fetch(url, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+}).then((res) => res.json());
 
 export async function getServerSideProps() {
     const posts = await fetcher(API_POSTS);
