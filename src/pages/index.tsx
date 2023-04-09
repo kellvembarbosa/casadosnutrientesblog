@@ -15,7 +15,8 @@ type Data = {
 const Blog: NextPage = (fallback) => {
 
     const [isLoading, setLoading] = useState(false)
-    const { data, error } = useSWR<Data>('/api/posts', fetcher)
+    const { data, error } = useSWR<Data>(API_POSTS, fetcher)
+    
     if (error) return <div>An error occured.</div>
     if (!data) return <PacmanLoader
         color='white'
@@ -39,7 +40,7 @@ const Blog: NextPage = (fallback) => {
     ></PacmanLoader>
     return (
         <SWRConfig value={{ fallback }}>
-            <div className="bg-gray-800 min-h-screen">
+            <div className="bg-gray-800 min-h-screen"> 
                 <div className="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
                     <h1 className="text-4xl text-center font-bold text-white">Blog Casa dos Nutrientes</h1>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
@@ -82,7 +83,8 @@ const fetcher = (url: string) => fetch(url, {
 }).then((res) => res.json());
 
 export async function getServerSideProps() {
-    const posts = await fetcher(API_POSTS);
+    const { posts } = await fetcher(API_POSTS);
+    
     return {
         props: {
             fallback: {
