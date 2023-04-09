@@ -16,16 +16,16 @@ export default async function handler(
 ) {
 
   try {
-    
-    const { slug }= JSON.parse(req.body)
-    const post = await prisma.post.findUnique({
-        where: {
-            slug: slug
-        }
-    })
-    const imagesSTR = post?.image.toString('base64') ?? ''
-    res.status(200).json({ post: post?? 'Nenhum post encontrado!', imagesSTR: imagesSTR})
 
+    // const { slug }= JSON.parse(req.body)
+    // const post = await prisma.post.findUnique({
+    //     where: {
+    //         slug: slug
+    //     }
+    // })
+    // const imagesSTR = post?.image.toString('base64') ?? ''
+    // res.status(200).json({ post: post?? 'Nenhum post encontrado!', imagesSTR: imagesSTR})
+res.status(200)
   } catch (error) {
     console.log(error)
   }
