@@ -1,7 +1,8 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Post from '../components/Post';
-import { GetServerSideProps } from 'next'
 import { post } from '@prisma/client';
+import { useRouter } from 'next/router';
+import { API_POST, API_POSTS } from '@/utils/globalvars';
 
 const fetcher = (url: string, options: {
   'slug': string}) => fetch(url, {
@@ -9,7 +10,6 @@ const fetcher = (url: string, options: {
   method: 'POST'
 }).then((res) => res.json());
 
-const API = 'http://localhost:3000/api/post'
 
 type Data = {
   post: post,
@@ -25,6 +25,10 @@ type PropsPost = {
 
 const PostPage: NextPage<PropsPost> = ({resPostPage}) => {
   const {post, imagesSTR} = resPostPage
+  const router = useRouter()
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div>
@@ -45,8 +49,8 @@ const PostPage: NextPage<PropsPost> = ({resPostPage}) => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context
 
-  const resPostPage: Data = await fetcher(API, {
-    slug: params?.post?.toString() ?? ''
+  const resPostPage: Data = await fetcher(API_POST, {
+    slug: params!.post as string
   });
 
   return {
@@ -67,12 +71,14 @@ type Dataa = {
 }
 
 const fetcherr = (url: string) => fetch(url).then((res) => res.json());
-const APII = 'http://localhost:3000/api/posts'
 
 export const getStaticPaths: GetStaticPaths = async () =>{
-  const posts: Dataa = await fetcherr(APII);
+  const posts: Dataa = await fetcherr(API_POSTS);
 
-  const paths = posts.posts.map(post => ({params: {post: post.slug}}))
+  const paths = posts.posts.map(post => ({
+    params: { post: post.slug }
+  }))
+  
   return { paths, fallback: false };
 }
 

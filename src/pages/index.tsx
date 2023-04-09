@@ -5,6 +5,7 @@ import useSWR, { SWRConfig } from 'swr'
 import Image from 'next/image';
 import { PacmanLoader } from 'react-spinners';
 import { useState } from 'react';
+import { API_POSTS } from '@/utils/globalvars';
 
 type Data = {
     posts: post[],
@@ -74,14 +75,13 @@ const Blog: NextPage = (fallback) => {
 }
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
-const API = 'http://localhost:3000/api/posts'
 
 export async function getServerSideProps() {
-    const posts = await fetcher(API);
+    const posts = await fetcher(API_POSTS);
     return {
         props: {
             fallback: {
-                [API]: posts
+                [API_POSTS]: posts
             }
         }
     };
