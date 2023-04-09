@@ -14,24 +14,18 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-    const { slug }= JSON.parse(req.body)
-
-    // res.status(200)
 
   try {
-
+    
+    const { slug }= JSON.parse(req.body)
     const post = await prisma.post.findUnique({
         where: {
             slug: slug
         }
     })
-
     const imagesSTR = post?.image.toString('base64') ?? ''
-
-
-
-
     res.status(200).json({ post: post?? 'Nenhum post encontrado!', imagesSTR: imagesSTR})
+
   } catch (error) {
     console.log(error)
   }
