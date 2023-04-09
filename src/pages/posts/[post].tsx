@@ -81,12 +81,12 @@ const fetcherr = (url: string) => fetch(url, {
 }).then((res) => res.json());
 
 export const getStaticPaths: GetStaticPaths = async () =>{
-  const posts: Dataa = await fetcherr(API_POSTS);
+  // const posts: Dataa = await fetcherr(API_POSTS);
 
-  const paths = posts.posts.map(post => ({
-    params: { post: post.slug }
-  }))
-  
+  // const paths = posts.posts.map(post => ({
+  //   params: { post: post.slug }
+  // }))
+  const paths = [{params: {post: 'abc'}}, {params: {post: 'def'}}, {params: {post: 'ghi'}}, {params: {post: 'jkl'}}, {params: {post: 'mno'}}]
   return { paths, fallback: false };
 }
 
