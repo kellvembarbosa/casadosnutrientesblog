@@ -4,7 +4,12 @@ import { post } from '@prisma/client'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
-  posts: post[],
+  posts: {
+    slug: string;
+    title: string;
+    content: string;
+    created_at: Date | null;
+}[],
   imagesSTR: string[]
 }
 
@@ -14,12 +19,42 @@ export default async function handler(
 ) {
   try {
     const posts = await prisma.post.findMany({
-      take: 10
+      select: {
+        title: true,
+        created_at: true,
+        content: true,
+        slug: true,
+        idpost: false,
+        image: false,
+        ig_url: false,
+        kawai_url: false,
+        tiktok_url: false,
+        yt_url: false
+      },
+      take: 6
+    })
+    const images = await prisma.post.findMany({
+      select: {
+        title: false,
+        created_at: false,
+        content: false,
+        slug: false,
+        idpost: false,
+        image: true,
+        ig_url: false,
+        kawai_url: false,
+        tiktok_url: false,
+        yt_url: false
+      },
+      take: 6
     })
     //Precisa fazer essa separação aqui, pois no cliente não é possível utilizar image.toString('base64')
-    const imagesSTR = posts.map(post => post.image).map(image => image.toString('base64'))
+    const imagesSTR = images.map(image => image.image).map(image => image.toString('base64'))
+    console.log(
+      JSON.stringify({ posts: posts, imagesSTR}).length
+    );
 
-    res.status(200).json({ posts: posts, imagesSTR: imagesSTR })
+    res.status(200).json({ posts: posts , imagesSTR: imagesSTR})
   } catch (error) {
     console.log(error)
   }
