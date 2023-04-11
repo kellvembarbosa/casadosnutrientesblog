@@ -75,7 +75,7 @@ type PathType = {
 const fetcherr = (url: string) => fetch(url).then((res) => res.json());
 
 export const getStaticPaths: GetStaticPaths = async () =>{
-  const getPaths: PathType = await fetcherr(API_PATHS);
+  const getPaths: PathType = await fetcherr('https://casadosnutrientesblog.vercel.app/api/getPaths');
  
 
   const paths = getPaths.paths.map(path => ({
