@@ -3,6 +3,8 @@ import Post from '../components/Post';
 import { post } from '@prisma/client';
 import { useRouter } from 'next/router';
 import { API_PATHS, API_POST, API_POSTS } from '@/utils/globalvars';
+import { prisma } from '@/lib/prisma'
+
 
 const fetcher = (url: string, options: {
   'slug': string}) => fetch(url, {
@@ -52,37 +54,46 @@ const PostPage: NextPage<PropsPost> = () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context
 
-  const resPostPage: Data = await fetcher(API_POST, {
-    slug: params!.post as string
-  });
+  // const resPostPage: Data = await fetcher(API_POST, {
+  //   slug: params!.post as string
+  // });
 
   return {
       props: {
-        resPostPage
+        
       }
   };
 }
 
 
 
-type PathType = {
-  paths: {
-    slug: string;
-}[]
+interface PropsPath {
+  paths: Path[]
 }
 
-
-const fetcherr = (url: string) => fetch(url).then((res) => res.json());
+interface Path {
+  slug: string
+}
 
 export const getStaticPaths: GetStaticPaths = async () =>{
-  const getPaths: PathType = await fetcherr('/api/getPaths');
- 
-
-  const paths = getPaths.paths.map(path => ({
+  const getPaths = await prisma.post.findMany({
+    select: {
+      title: false,
+      created_at: false,
+      content: false,
+      slug: true,
+      idpost: false,
+      image: false,
+      ig_url: false,
+      kawai_url: false,
+      tiktok_url: false,
+      yt_url: false
+    }
+  })
+  const paths = getPaths.map(path => ({
     params: { post: path.slug }
   }))
   
-  // const paths = [{params: {post: 'abc'}}, {params: {post: 'def'}}, {params: {post: 'ghi'}}, {params: {post: 'jkl'}}, {params: {post: 'mno'}}]
   return { paths, fallback: false };
 }
 
