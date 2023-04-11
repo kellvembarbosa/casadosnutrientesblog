@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Post from '../components/Post';
 import { post } from '@prisma/client';
 import { useRouter } from 'next/router';
-import { API_POST, API_POSTS } from '@/utils/globalvars';
+import { API_PATHS, API_POST, API_POSTS } from '@/utils/globalvars';
 
 const fetcher = (url: string, options: {
   'slug': string}) => fetch(url, {
@@ -65,13 +65,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 
 
-
-
-
-
 type Dataa = {
-  posts: post[],
+  paths: {
+    slug: string;
+}[]
 }
+
 
 const fetcherr = (url: string) => fetch(url, {
   method: 'POST',
@@ -81,10 +80,10 @@ const fetcherr = (url: string) => fetch(url, {
 }).then((res) => res.json());
 
 export const getStaticPaths: GetStaticPaths = async () =>{
-  const posts: Dataa = await fetcherr(API_POSTS);
+  const getPaths: Dataa = await fetcherr(API_PATHS);
 
-  const paths = posts.posts.map(post => ({
-    params: { post: post.slug }
+  const paths = getPaths.paths.map(path => ({
+    params: { post: path.slug }
   }))
   // const paths = [{params: {post: 'abc'}}, {params: {post: 'def'}}, {params: {post: 'ghi'}}, {params: {post: 'jkl'}}, {params: {post: 'mno'}}]
   return { paths, fallback: false };
