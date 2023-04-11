@@ -82,17 +82,17 @@ const fetcher = (url: string) => fetch(url, {
     }
 }).then((res) => res.json());
 
-export async function getServerSideProps() {
-    const { posts } = await fetcher(API_POSTS);
+// export async function getServerSideProps() {
+//     const { posts } = await fetcher(API_POSTS);
     
-    return {
-        props: {
-            fallback: {
-                [API_POSTS]: posts
-            }
-        }
-    };
-}
+//     return {
+//         props: {
+//             fallback: {
+//                 [API_POSTS]: posts
+//             }
+//         }
+//     };
+// }
 
 
 export default Blog
