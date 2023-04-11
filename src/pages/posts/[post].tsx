@@ -26,8 +26,8 @@ type PropsPost = {
 }
 
 // const PostPage: NextPage<PropsPost> = ({resPostPage}) 
-const PostPage: NextPage<PropsPost> = ({resPostPage}) => {
-  const {post, imagesSTR} = resPostPage
+const PostPage: NextPage<PropsPost> = () => {
+  // const {post, imagesSTR} = resPostPage
   // const router = useRouter()
   // if (router.isFallback) {
   //   return <div>Loading...</div>
@@ -35,7 +35,7 @@ const PostPage: NextPage<PropsPost> = ({resPostPage}) => {
 
   return (
     <div>
-      <Post
+      {/* <Post
         title= {post.title}
         content= {post.content}
         imageUrl= {imagesSTR}
@@ -44,7 +44,7 @@ const PostPage: NextPage<PropsPost> = ({resPostPage}) => {
         tiktokLink= {post.tiktok_url}
         youtubeLink= {post.yt_url ?? '#'}
         createdAt= {new Date(post.created_at ?? '').toLocaleDateString()}
-      />
+      /> */}
     </div>
   );
 };
