@@ -28,7 +28,7 @@ export default async function handler(
           yt_url: false
         }
       })
-      res.status(200).json({
+      res.status(200).send({
         paths: paths
       })
     } catch (error) {

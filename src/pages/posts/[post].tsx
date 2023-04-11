@@ -75,9 +75,8 @@ type PathType = {
 const fetcherr = (url: string) => fetch(url).then((res) => res.json());
 
 export const getStaticPaths: GetStaticPaths = async () =>{
-  const getAllPaths = await fetch(API_PATHS);
-  const getPaths: PathType= await getAllPaths.json()
-  
+  const getPaths: PathType = await fetcherr(API_PATHS);
+ 
 
   const paths = getPaths.paths.map(path => ({
     params: { post: path.slug }
