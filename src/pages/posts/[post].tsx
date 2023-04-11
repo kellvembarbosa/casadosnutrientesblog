@@ -73,10 +73,10 @@ type PathType = {
 
 
 const fetcherr = (url: string) => fetch(url, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  }
+  // method: 'POST',
+  // headers: {
+  //   'Content-Type': 'application/json',
+  // }
 }).then((res) => res.json());
 
 export const getStaticPaths: GetStaticPaths = async () =>{
