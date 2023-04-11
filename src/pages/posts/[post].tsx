@@ -65,7 +65,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 
 
-type Dataa = {
+type PathType = {
   paths: {
     slug: string;
 }[]
@@ -80,11 +80,13 @@ const fetcherr = (url: string) => fetch(url, {
 }).then((res) => res.json());
 
 export const getStaticPaths: GetStaticPaths = async () =>{
-  const getPaths: Dataa = await fetcherr(API_PATHS);
-
+  const getPaths: PathType = await fetcherr(API_PATHS);
+ 
   const paths = getPaths.paths.map(path => ({
     params: { post: path.slug }
   }))
+  console.log(paths);
+  
   // const paths = [{params: {post: 'abc'}}, {params: {post: 'def'}}, {params: {post: 'ghi'}}, {params: {post: 'jkl'}}, {params: {post: 'mno'}}]
   return { paths, fallback: false };
 }
