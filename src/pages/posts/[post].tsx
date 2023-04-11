@@ -28,8 +28,8 @@ type PropsPost = {
 }
 
 // const PostPage: NextPage<PropsPost> = ({resPostPage}) 
-const PostPage: NextPage<PropsPost> = () => {
-  // const {post, imagesSTR} = resPostPage
+const PostPage: NextPage<PropsPost> = ({resPostPage}) => {
+  const {post, imagesSTR} = resPostPage
   // const router = useRouter()
   // if (router.isFallback) {
   //   return <div>Loading...</div>
@@ -37,7 +37,7 @@ const PostPage: NextPage<PropsPost> = () => {
 
   return (
     <div>
-      {/* <Post
+      <Post
         title= {post.title}
         content= {post.content}
         imageUrl= {imagesSTR}
@@ -46,7 +46,7 @@ const PostPage: NextPage<PropsPost> = () => {
         tiktokLink= {post.tiktok_url}
         youtubeLink= {post.yt_url ?? '#'}
         createdAt= {new Date(post.created_at ?? '').toLocaleDateString()}
-      /> */}
+      />
     </div>
   );
 };
@@ -54,13 +54,13 @@ const PostPage: NextPage<PropsPost> = () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context
 
-  // const resPostPage: Data = await fetcher(API_POST, {
-  //   slug: params!.post as string
-  // });
+  const resPostPage: Data = await fetcher(API_POST, {
+    slug: params!.post as string
+  });
 
   return {
       props: {
-        
+        resPostPage
       }
   };
 }
