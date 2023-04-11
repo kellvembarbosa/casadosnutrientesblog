@@ -10,7 +10,7 @@ type Data = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<Data>
 ) {
   try {
     const paths = await prisma.post.findMany({
@@ -27,9 +27,9 @@ export default async function handler(
         yt_url: false
       }
     })
-    res.status(200).json(JSON.stringify({
+    res.status(200).json({
       paths: paths
-    }))
+    })
   } catch (error) {
     console.log(error)
   }
