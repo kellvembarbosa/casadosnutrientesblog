@@ -8,36 +8,30 @@ datasource db {
 }
 
 model category {
-  category_id       Int                 @id @default(autoincrement())
-  name              String              @db.VarChar(255)
-  slug              String?             @db.VarChar(45)
-  post_has_category post_has_category[]
+  category_id Int     @id @default(autoincrement())
+  name        String  @db.VarChar(255)
+  slug        String? @db.VarChar(45)
+  post        post[]
 }
 
 model post {
-  idpost            Int                 @id @default(autoincrement())
-  title             String              @db.VarChar(45)
-  content           String              @db.MediumText
-  image             Bytes               @db.MediumBlob
-  ig_url            String?             @default("#") @db.VarChar(150)
-  kawai_url         String?             @default("#") @db.VarChar(150)
-  tiktok_url        String              @db.VarChar(150)
-  yt_url            String?             @default("#") @db.VarChar(150)
-  created_at        DateTime?           @default(now()) @db.Timestamp(0)
-  slug              String              @unique(map: "slug_UNIQUE") @db.VarChar(45)
-  post_has_category post_has_category[]
-  post_has_tag      post_has_tag[]
-}
-
-model post_has_category {
-  post_idpost          Int
+  idpost               Int            @default(autoincrement())
+  title                String         @db.VarChar(150)
+  content              String         @db.MediumText
+  image                Bytes          @db.MediumBlob
+  ig_url               String?        @default("#") @db.VarChar(150)
+  kawai_url            String?        @default("#") @db.VarChar(150)
+  tiktok_url           String         @db.VarChar(150)
+  yt_url               String?        @default("#") @db.VarChar(150)
+  created_at           DateTime?      @default(now()) @db.Timestamp(0)
+  slug                 String         @unique(map: "slug_UNIQUE") @db.VarChar(150)
   category_category_id Int
-  category             category @relation(fields: [category_category_id], references: [category_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_post_has_category_category1")
-  post                 post     @relation(fields: [post_idpost], references: [idpost], onDelete: NoAction, onUpdate: NoAction, map: "fk_post_has_category_post1")
+  category             category       @relation(fields: [category_category_id], references: [category_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_post_category1")
+  post_has_tag         post_has_tag[]
 
-  @@id([post_idpost, category_category_id])
-  @@index([category_category_id], map: "fk_post_has_category_category1_idx")
-  @@index([post_idpost], map: "fk_post_has_category_post1_idx")
+  @@id([idpost, category_category_id])
+  @@index([category_category_id], map: "fk_post_category1_idx")
+  @@unique([idpost])
 }
 
 model post_has_tag {

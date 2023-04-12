@@ -1,10 +1,20 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { prisma } from '@/lib/prisma'
-import { post } from '@prisma/client'
+import { category, post_has_tag } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
   post: {
+    category: {
+        name: string;
+        slug: string | null;
+    };
+    post_has_tag: {
+        tag: {
+            tag: string | null;
+            slug: string | null;
+        };
+    }[];
     title: string;
     content: string;
     ig_url: string | null;
@@ -25,20 +35,34 @@ export default async function handler(
     const post = await prisma.post.findUnique({
       select: {
         title: true,
+        category: {
+          select: {
+            name: true,
+            slug: true
+          },
+        },
         created_at: true,
         content: true,
-        slug: false,
-        idpost: false,
-        image: false,
         ig_url: true,
         kawai_url: true,
         tiktok_url: true,
-        yt_url: true
+        yt_url: true,
+        post_has_tag: {
+          select: {
+            tag: {
+              select: {
+                tag: true,
+                slug: true
+              }
+            },
+          }
+        },
       },
       where: {
         slug: slug
-      }
+      }     
     })
+
     const images = await prisma.post.findUnique({
       select: {
         title: false,
@@ -56,6 +80,7 @@ export default async function handler(
         slug: slug
       }
     })
+    
     //Precisa fazer essa separação aqui, pois no cliente não é possível utilizar image.toString('base64')
     const imagesSTR = images!.image.toString('base64')
     console.log(
