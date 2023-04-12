@@ -15,30 +15,25 @@ const fetcher = (url: string, options: {
   }
 }).then((res) => res.json());
 
-
-type Data = {
+interface Data {
   post: {
-    category: {
-        name: string;
-        slug: string;
-    };
-    post_has_tag: {
-        tag: {
-            tag: string | null;
-            slug: string | null;
-        };
-    }[];
-    title: string;
-    content: string;
-    ig_url: string | null;
-    kawai_url: string | null;
-    tiktok_url: string;
-    yt_url: string | null;
-    created_at: Date | null;
-},
+    title: string
+    created_at: string
+    content: string
+    ig_url: string
+    kawai_url: string
+    tiktok_url: string
+    yt_url: string
+    post_has_tag: PostHasTag[],
+  }
   imagesSTR: string
-  //   category: category,
-  //   tags: tag[]
+}
+interface PostHasTag {
+  tag: Tag
+}
+interface Tag {
+  tag: string
+  slug: string
 }
 
 type PropsPost = {
@@ -48,24 +43,26 @@ type PropsPost = {
 // const PostPage: NextPage<PropsPost> = ({resPostPage}) 
 const PostPage: NextPage<PropsPost> = ({ resPostPage }) => {
   const { post, imagesSTR } = resPostPage
-  console.log(post.category.slug);
-  
+  const {title, created_at, content, ig_url, kawai_url, tiktok_url, yt_url, post_has_tag} = post
+
   return (
     <div>
       <Post
-        title={post.title}
-        content={post.content}
-        imageUrl={imagesSTR}
-        instagramLink={post.ig_url ?? '#'}
-        kawaiLink={post.kawai_url ?? '#'}
-        tiktokLink={post.tiktok_url}
-        youtubeLink={post.yt_url ?? '#'}
-        createdAt={new Date(post.created_at ?? '').toLocaleDateString()}
+        title={title}
+        content={content}
+        imagesSTR={imagesSTR}
+        ig_url={ig_url ?? '#'}
+        kawai_url={kawai_url ?? '#'}
+        tiktok_url={tiktok_url}
+        yt_url={yt_url ?? '#'}
+        created_at={new Date(created_at ?? '').toLocaleDateString()}
+        post_has_tag={post_has_tag}
         // category={{
         //   name: post.category.name,
         //   slug: post.category.slug
         // }}
-        post_has_tag={post.post_has_tag} />
+        
+        />
     </div>
   );
 };
