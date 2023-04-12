@@ -20,16 +20,16 @@ type PostsType = {
     nameTag: string
 }
 
-const TagPage: NextPage<PostsType> = ({ serializabledPost, nameTag}) => {
+const TagPage: NextPage<PostsType> = ({ serializabledPost, nameTag }) => {
     return (
         <div>
-            {
-                serializabledPost.map((post, index) => (
-                    <div key={index} className="bg-gray-800 min-h-screen">
-                        <div className="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
-                            <h1 className="text-4xl text-center font-bold text-white">{`#${nameTag}`}</h1>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                                <div className="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+            <div className="bg-gray-800 min-h-screen">
+                <div className="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
+                    <h1 className="text-4xl text-center font-bold text-white">{`#${nameTag}`}</h1>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                        {
+                            serializabledPost.map((post, index) => (
+                                <div key={index} className="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
                                     <div className="h-64 bg-cover bg-center">
                                         <Image style={{
                                             objectFit: 'fill',
@@ -49,11 +49,12 @@ const TagPage: NextPage<PostsType> = ({ serializabledPost, nameTag}) => {
                                         <p className="text-gray-400 mt-2 truncate">{post.content}</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            ))
+
+                        }
                     </div>
-                ))
-            }
+                </div>
+            </div>
         </div>
     )
 }

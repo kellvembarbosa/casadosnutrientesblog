@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Modal from './Modal';
 import SocialMediaLinks from './SocialMediaLinks';
 import { FaPlayCircle } from 'react-icons/fa';
-import { category, post_has_tag } from '@prisma/client';
 import Link from 'next/link';
 
 interface Data {
@@ -14,7 +13,7 @@ interface Data {
   kawai_url: string
   tiktok_url: string
   yt_url: string
-  post_has_tag: PostHasTag[],
+  post_has_tag: PostHasTag[]
   imagesSTR: string
 }
 interface PostHasTag {
@@ -82,13 +81,13 @@ const Post: React.FC<Data> = ({
             post_has_tag.map((tag, index) => (
               <Link
                 key={index}
-                href={`/tags/${tag.tag.slug} `?? '#'}
-              >
+                href={`/tags/${tag.tag.slug}` ?? '#'}>
                 <span className="text-gray-500 text-sm font-bold mr-2">
                   {tag.tag.tag}
                 </span>
               </Link>
-            ))}
+            ))
+          }
         </div>
 
 

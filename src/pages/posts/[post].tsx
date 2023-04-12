@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Post from '../components/Post';
 import { API_POST } from '@/utils/globalvars';
 import { prisma } from '@/lib/prisma'
-import { category, post_has_tag } from '@prisma/client';
 
 
 const fetcher = (url: string, options: {
