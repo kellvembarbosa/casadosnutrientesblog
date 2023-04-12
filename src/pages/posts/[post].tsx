@@ -20,7 +20,7 @@ type Data = {
   post: {
     category: {
         name: string;
-        slug: string | null;
+        slug: string;
     };
     post_has_tag: {
         tag: {
