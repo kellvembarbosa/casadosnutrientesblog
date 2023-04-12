@@ -1,4 +1,4 @@
-const baseURL = 'https://casadosnutrientesblog-leuir2xok-samuelfre.vercel.app' //Vercel
+const baseURL = 'https://casadosnutrientesblog.vercel.app' //Vercel
 // const baseURL = 'http://localhost:3000' //Casa
 // const baseURL = 'http://172.17.16.227:3000' //Tribunal
 
