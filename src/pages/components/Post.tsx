@@ -15,6 +15,10 @@ interface Data {
   yt_url: string
   post_has_tag: PostHasTag[]
   imagesSTR: string
+  category: {
+    name: string,
+    slug: string
+}
 }
 interface PostHasTag {
   tag: Tag
@@ -32,7 +36,7 @@ const Post: React.FC<Data> = ({
   kawai_url,
   tiktok_url,
   yt_url,
-  // category,
+  category,
   post_has_tag,
   imagesSTR
 }) => {
@@ -70,10 +74,10 @@ const Post: React.FC<Data> = ({
 
         <div className="flex flex-wrap mb-2 mt-3">
           <span className="text-gray-500 text-base mr-2">Categoria:</span>
-          {/* <Link
+          <Link
             href={category.slug ?? '#'}>
             <span className="text-gray-500 text-sm font-bold">{category.name}</span>
-          </Link> */}
+          </Link>
         </div>
         <div className="flex flex-wrap">
           <span className="text-gray-500 text-base mr-2">Tags:</span>

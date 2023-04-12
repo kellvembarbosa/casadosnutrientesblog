@@ -3,9 +3,6 @@ import { prisma } from '@/lib/prisma'
 import { category, post_has_tag } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-
-
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -22,6 +19,12 @@ export default async function handler(
         kawai_url: true,
         tiktok_url: true,
         yt_url: true,
+        category: {
+          select: {
+            name: true,
+            slug: true
+          }
+        },
         post_has_tag: {
           select: {
             tag: {

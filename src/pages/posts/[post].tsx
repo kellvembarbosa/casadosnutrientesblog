@@ -24,6 +24,10 @@ interface Data {
     tiktok_url: string
     yt_url: string
     post_has_tag: PostHasTag[],
+    category: {
+      name: string,
+      slug: string
+  }
   }
   imagesSTR: string
 }
@@ -42,7 +46,7 @@ type PropsPost = {
 // const PostPage: NextPage<PropsPost> = ({resPostPage}) 
 const PostPage: NextPage<PropsPost> = ({ resPostPage }) => {
   const { post, imagesSTR } = resPostPage
-  const {title, created_at, content, ig_url, kawai_url, tiktok_url, yt_url, post_has_tag} = post
+  const {title, created_at, content, ig_url, kawai_url, tiktok_url, yt_url, post_has_tag, category} = post
  
   return (
     <div>
@@ -56,11 +60,7 @@ const PostPage: NextPage<PropsPost> = ({ resPostPage }) => {
         yt_url={yt_url ?? '#'}
         created_at={new Date(created_at ?? '').toLocaleDateString()}
         post_has_tag={post_has_tag}
-        // category={{
-        //   name: post.category.name,
-        //   slug: post.category.slug
-        // }}
-        
+        category={category}        
         />
     </div>
   );
