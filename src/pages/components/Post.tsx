@@ -78,7 +78,7 @@ const Post: React.FC<Data> = ({
         </div>
         <div className="flex flex-wrap">
           <span className="text-gray-500 text-base mr-2">Tags:</span>
-          {/* {
+          {
             post_has_tag.map((tag, index) => (
               <Link
                 key={index}
@@ -88,7 +88,7 @@ const Post: React.FC<Data> = ({
                   {tag.tag.tag}
                 </span>
               </Link>
-            ))} */}
+            ))}
         </div>
 
 

@@ -27,7 +27,7 @@ const TagPage: NextPage<PostsType> = ({ serializabledPost, nameTag}) => {
                 serializabledPost.map((post, index) => (
                     <div key={index} className="bg-gray-800 min-h-screen">
                         <div className="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
-                            <h1 className="text-4xl text-center font-bold text-white">${nameTag}</h1>
+                            <h1 className="text-4xl text-center font-bold text-white">{`#${nameTag}`}</h1>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
                                 <div className="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
                                     <div className="h-64 bg-cover bg-center">

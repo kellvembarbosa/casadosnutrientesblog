@@ -47,7 +47,7 @@ const PostPage: NextPage<PropsPost> = ({ resPostPage }) => {
  
   return (
     <div>
-      <Post
+      {/* <Post
         title={title}
         content={content}
         imagesSTR={imagesSTR}
@@ -62,7 +62,7 @@ const PostPage: NextPage<PropsPost> = ({ resPostPage }) => {
         //   slug: post.category.slug
         // }}
         
-        />
+        /> */}
     </div>
   );
 };
