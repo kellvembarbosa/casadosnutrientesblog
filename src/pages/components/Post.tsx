@@ -69,12 +69,12 @@ const Post: React.FC<Data> = ({
           )}
         </div>
 
-        {/* <div className="flex flex-wrap mb-2 mt-3">
+        <div className="flex flex-wrap mb-2 mt-3">
           <span className="text-gray-500 text-base mr-2">Categoria:</span>
-          <Link
+          {/* <Link
             href={category.slug ?? '#'}>
             <span className="text-gray-500 text-sm font-bold">{category.name}</span>
-          </Link>
+          </Link> */}
         </div>
         <div className="flex flex-wrap">
           <span className="text-gray-500 text-base mr-2">Tags:</span>
@@ -89,7 +89,7 @@ const Post: React.FC<Data> = ({
                 </span>
               </Link>
             ))}
-        </div> */}
+        </div>
 
 
       </div>
