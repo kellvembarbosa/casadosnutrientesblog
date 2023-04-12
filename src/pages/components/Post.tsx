@@ -15,10 +15,10 @@ interface PostProps {
   tiktokLink: string;
   youtubeLink: string;
   createdAt: string;
-  category: {
-    name: string;
-    slug: string | null;
-  },
+  // category: {
+  //   name: string;
+  //   slug: string | null;
+  // },
   post_has_tag: {
     tag: {
       tag: string | null;
@@ -36,7 +36,7 @@ const Post: React.FC<PostProps> = ({
   tiktokLink,
   youtubeLink,
   createdAt,
-  category,
+  // category,
   post_has_tag
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -73,10 +73,10 @@ const Post: React.FC<PostProps> = ({
 
         <div className="flex flex-wrap mb-2 mt-3">
           <span className="text-gray-500 text-base mr-2">Categoria:</span>
-          <Link
+          {/* <Link
             href={category.slug ?? '#'}>
             <span className="text-gray-500 text-sm font-bold">{category.name}</span>
-          </Link>
+          </Link> */}
         </div>
         <div className="flex flex-wrap">
           <span className="text-gray-500 text-base mr-2">Tags:</span>

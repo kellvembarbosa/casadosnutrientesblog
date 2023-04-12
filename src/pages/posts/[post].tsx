@@ -48,6 +48,8 @@ type PropsPost = {
 // const PostPage: NextPage<PropsPost> = ({resPostPage}) 
 const PostPage: NextPage<PropsPost> = ({ resPostPage }) => {
   const { post, imagesSTR } = resPostPage
+  console.log(post.category.slug);
+  
   return (
     <div>
       <Post
@@ -59,10 +61,10 @@ const PostPage: NextPage<PropsPost> = ({ resPostPage }) => {
         tiktokLink={post.tiktok_url}
         youtubeLink={post.yt_url ?? '#'}
         createdAt={new Date(post.created_at ?? '').toLocaleDateString()}
-        category={{
-          name: post.category.name,
-          slug: post.category.slug
-        }}
+        // category={{
+        //   name: post.category.name,
+        //   slug: post.category.slug
+        // }}
         post_has_tag={post.post_has_tag} />
     </div>
   );
