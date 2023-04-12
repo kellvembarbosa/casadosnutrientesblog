@@ -78,15 +78,15 @@ const Post: React.FC<Data> = ({
         <div className="flex flex-wrap">
           <span className="text-gray-500 text-base mr-2">Tags:</span>
           {
-            post_has_tag.map((tag, index) => (
-              <Link
-                key={index}
-                href={`/tags/${tag.tag.slug}` ?? '#'}>
-                <span className="text-gray-500 text-sm font-bold mr-2">
-                  {tag.tag.tag}
-                </span>
-              </Link>
-            ))
+            // post_has_tag.map((tag, index) => (
+            //   <Link
+            //     key={index}
+            //     href={`/tags/${tag.tag.slug}` ?? '#'}>
+            //     <span className="text-gray-500 text-sm font-bold mr-2">
+            //       {tag.tag.tag}
+            //     </span>
+            //   </Link>
+            // ))
           }
         </div>
 
