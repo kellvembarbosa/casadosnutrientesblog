@@ -5,7 +5,6 @@ import useSWR, { SWRConfig } from 'swr'
 import Image from 'next/image';
 import { PacmanLoader } from 'react-spinners';
 import { useState } from 'react';
-import { API_POSTS } from '@/utils/globalvars';
 
 type Data = {
     posts: post[],
@@ -15,7 +14,7 @@ type Data = {
 const Blog: NextPage = (fallback) => {
 
     const [isLoading, setLoading] = useState(false)
-    const { data, error } = useSWR<Data>(API_POSTS, fetcher)
+    const { data, error } = useSWR<Data>(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/posts`, fetcher)
     
     if (error) return <div>An error occured.</div>
     if (!data) return <PacmanLoader

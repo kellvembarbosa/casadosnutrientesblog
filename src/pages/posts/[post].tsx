@@ -1,18 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Post from '../components/Post';
-import { API_POST } from '@/utils/globalvars';
 import { prisma } from '@/lib/prisma'
-
-
-const fetcher = (url: string, options: {
-  'slug': string
-}) => fetch(url, {
-  body: JSON.stringify(options),
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-}).then((res) => res.json());
+import loadPosts from '../../lib/loadPosts'
 
 interface Data {
   post: {
@@ -47,7 +36,6 @@ type PropsPost = {
 const PostPage: NextPage<PropsPost> = ({ resPostPage }) => {
   const { post, imagesSTR } = resPostPage
   const {title, created_at, content, ig_url, kawai_url, tiktok_url, yt_url, post_has_tag, category} = post
- 
   return (
     <div>
       <Post
@@ -68,10 +56,8 @@ const PostPage: NextPage<PropsPost> = ({ resPostPage }) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context
-
-  const resPostPage: Data = await fetcher(API_POST, {
-    slug: params!.post as string
-  });
+  const slug = params!.post as string
+  const resPostPage = await loadPosts(slug)
 
   return {
     props: {
