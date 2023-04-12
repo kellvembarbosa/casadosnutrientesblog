@@ -44,7 +44,7 @@ type PropsPost = {
 const PostPage: NextPage<PropsPost> = ({ resPostPage }) => {
   const { post, imagesSTR } = resPostPage
   const {title, created_at, content, ig_url, kawai_url, tiktok_url, yt_url, post_has_tag} = post
-
+ 
   return (
     <div>
       <Post
