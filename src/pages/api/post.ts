@@ -5,10 +5,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
   post: {
-    category: {
-        name: string;
-        slug: string | null;
-    };
     post_has_tag: {
         tag: {
             tag: string | null;
@@ -35,12 +31,6 @@ export default async function handler(
     const post = await prisma.post.findUnique({
       select: {
         title: true,
-        category: {
-          select: {
-            name: true,
-            slug: true
-          },
-        },
         created_at: true,
         content: true,
         ig_url: true,
