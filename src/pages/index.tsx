@@ -97,7 +97,7 @@ const fetcher = (url: string) => fetch(url, {
 }).then((res) => res.json());
 
 export async function getServerSideProps() {
-    const API_POSTS = `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/post`
+    const API_POSTS = `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/posts`
     const { posts } = await fetcher(API_POSTS);
 
     return {
