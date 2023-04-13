@@ -24,7 +24,7 @@ const Menu = () => {
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     {/* <!-- Heroicon name: search --> */}
                                     <svg className="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M13.15 14.43a8 8 0 111.42-1.42l3.86 3.87a1 1 0 11-1.42 1.42l-3.86-3.87zM8 14a6 6 0 100-12 6 6 0 000 12z" clip-rule="evenodd" />
+                                        <path fillRule="evenodd" d="M13.15 14.43a8 8 0 111.42-1.42l3.86 3.87a1 1 0 11-1.42 1.42l-3.86-3.87zM8 14a6 6 0 100-12 6 6 0 000 12z" clipRule="evenodd" />
                                     </svg>
                                 </div>
                                 <input id="search" name="search" className="block w-full bg-gray-900 text-white border border-gray-700 rounded-md py-2 pl-10 pr-3 leading-5 placeholder-gray-400 focus:outline-none focus:placeholder-gray-500 focus:border-gray-500 focus:ring-1 focus:ring-gray-500 focus:text-white sm:text-sm" placeholder="Pesquisar" type="search" autoComplete="off" />
@@ -37,11 +37,11 @@ const Menu = () => {
                             <span className="sr-only">Abrir menu principal</span>
                             {/* <!-- Ícone "hamburguer" --> */}
                             <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                             </svg>
                             {/* <!-- Ícone "x" para fechar o menu suspenso --> */}
                             <svg className="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
                     </div>

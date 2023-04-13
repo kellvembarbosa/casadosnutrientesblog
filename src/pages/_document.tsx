@@ -1,9 +1,13 @@
+import Footer from '@/components/Footer'
+import Menu from '@/components/Menu'
 import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
   return (
-    <Html lang="pt">
-      <Head />
+    <Html lang="pt-br">
+      <Head>
+        <Menu />
+      </Head>
       <body>
         <Main />
         <NextScript />

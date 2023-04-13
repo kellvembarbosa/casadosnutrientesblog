@@ -3,6 +3,8 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import Head from 'next/head'
+import Footer from '@/components/Footer'
 
 type PostsType = {
     serializabledPost: {
@@ -22,8 +24,16 @@ type PostsType = {
 
 const TagPage: NextPage<PostsType> = ({ serializabledPost, nameTag }) => {
     return (
-        <div>
-            <div className="bg-gray-800 min-h-screen">
+        <>
+            <Head>
+                <title className="text-white text-3xl text-center font-bold my-8">{`#${nameTag}`}</title>
+                <meta charSet="utf-8" />
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                {
+                    //Aqui é lista de tags fornecidas pelo google keywords
+                }
+            </Head>
+            <main className="bg-gray-800 min-h-screen">
                 <div className="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
                     <h1 className="text-4xl text-center font-bold text-white">{`#${nameTag}`}</h1>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
@@ -33,13 +43,13 @@ const TagPage: NextPage<PostsType> = ({ serializabledPost, nameTag }) => {
                                     <div className="h-64 bg-cover bg-center">
                                         <Image style={{
                                             objectFit: 'fill',
-                                            height: '100%',
-                                            width: '100%'
+                                            width: 600,
+                                            height: 256
                                         }}
                                             alt={''}
                                             src={`data:image/png;base64,${post.image}`}
-                                            width={100}
-                                            height={100} />
+                                            width={600}
+                                            height={256} />
                                     </div>
                                     <div className="px-6 py-4">
                                         <Link href={`/posts/${post.slug}`} className='block text-xl font-semibold text-white hover:text-gray-300'>
@@ -54,8 +64,9 @@ const TagPage: NextPage<PostsType> = ({ serializabledPost, nameTag }) => {
                         }
                     </div>
                 </div>
-            </div>
-        </div>
+            </main>
+            <Footer />
+        </>
     )
 }
 

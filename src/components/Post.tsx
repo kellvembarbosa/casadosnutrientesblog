@@ -4,6 +4,8 @@ import Modal from './Modal';
 import SocialMediaLinks from './SocialMediaLinks';
 import { FaPlayCircle } from 'react-icons/fa';
 import Link from 'next/link';
+import Head from 'next/head';
+import Footer from './Footer';
 
 interface Data {
   title: string
@@ -18,7 +20,7 @@ interface Data {
   category: {
     name: string,
     slug: string
-}
+  }
 }
 interface PostHasTag {
   tag: Tag
@@ -41,6 +43,7 @@ const Post: React.FC<Data> = ({
   imagesSTR
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const keywords = post_has_tag.map(tag => tag.tag.tag)
 
   const handleImageClick = () => {
     setIsModalOpen(!isModalOpen);
@@ -49,12 +52,20 @@ const Post: React.FC<Data> = ({
   return (
     <>
       {/* <Link href={`/`} className='fixed top-0 right-0 m-4 p-2 rounded-full bg-gray-400 text-base font-semibold text-gray-800 hover:text-gray-300'>Voltar</Link> */}
-      <div className="flex flex-col m-1 sm:m-10 p-5 items-center justify-center min-h-screen bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+      <Head>
+        <title className="text-white text-3xl text-center font-bold my-8">{title}</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        {
+          <meta name="keywords" content={keywords.join(', ')}></meta>
+        }
+      </Head>
+      <main className="flex flex-col m-1 sm:m-10 p-5 items-center justify-center min-h-screen bg-gray-900 rounded-lg overflow-hidden shadow-lg">
         <h1 className="text-white text-3xl text-center font-bold my-8">{title}</h1>
         <p className="text-gray-400 text-sm mt-2">Publicado em: {created_at}</p>
         <p className="text-white text-lg my-4 text-center">{content}</p>
         <div className="relative w-96 h-196 cursor-pointer" onClick={handleImageClick}>
-          <Image src={`data:image/png;base64,${imagesSTR}`} alt="post thumbnail" width={1080} height={1920} />
+          <Image src={`data:image/png;base64,${imagesSTR}`} alt="post thumbnail" width={600} height={256} />
           <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
             <FaPlayCircle size={128} color="#fff" />
           </div>
@@ -93,7 +104,8 @@ const Post: React.FC<Data> = ({
             ))
           }
         </div>
-      </div>
+      </main>
+      <Footer />
     </>
   );
 };
