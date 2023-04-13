@@ -8,19 +8,21 @@ type PropsCategoryPage = {
     serializabledPost: {
         image: string;
         created_at: string;
+        category: {
+            name: string;
+        };
         slug: string;
         title: string;
         content: string;
-    }[],
-    nameCategory: string
+    }[]
 }
 
-const CategoryPage: NextPage<PropsCategoryPage> = ({ serializabledPost, nameCategory }) => {
+const CategoryPage: NextPage<PropsCategoryPage> = ({ serializabledPost }) => {
     return (
         <div>
             <div className="bg-gray-800 min-h-screen">
                 <div className="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
-                    <h1 className="text-4xl text-center font-bold text-white">{`#${nameCategory}`}</h1>
+                    <h1 className="text-4xl text-center font-bold text-white">{`${serializabledPost[0].category.name}`}</h1>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
                         {
                             serializabledPost.map((post, index) => (
@@ -76,7 +78,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
             content: true,
             image: true,
             slug: true,
-            created_at: true
+            created_at: true,
+            category: {
+                select: {
+                    name: true
+                }
+            }
         },
         where: {
             category: {
