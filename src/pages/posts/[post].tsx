@@ -68,7 +68,6 @@ export const getStaticProps = async ({ params }: { params: MyGetStaticProps }) =
       }
     };
   } catch (error) {
-    console.error(error)
     return {
       notFound: true
     }

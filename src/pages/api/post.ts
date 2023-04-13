@@ -7,9 +7,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { slug } = req.body
-  console.log(req.body);
-  
+  const { slug } = JSON.parse(req.body)
 
   try {
     const post = await prisma.post.findUnique({
