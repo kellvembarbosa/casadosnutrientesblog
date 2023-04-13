@@ -75,9 +75,9 @@ const Post: React.FC<Data> = ({
             alt={title}
             width={600}
             height={600} /> */}
-          <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+          {/* <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
             <FaPlayCircle size={128} color="#fff" />
-          </div>
+          </div> */}
           {isModalOpen && (
             <Modal>
               <div className="flex justify-center items-center h-56">

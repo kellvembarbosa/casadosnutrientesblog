@@ -96,17 +96,18 @@ const fetcher = (url: string) => fetch(url, {
     }
 }).then((res) => res.json());
 
-// export async function getServerSideProps() {
-//     const { posts } = await fetcher(API_POSTS);
+export async function getServerSideProps() {
+    const API_POSTS = `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/post`
+    const { posts } = await fetcher(API_POSTS);
 
-//     return {
-//         props: {
-//             fallback: {
-//                 [API_POSTS]: posts
-//             }
-//         }
-//     };
-// }
+    return {
+        props: {
+            fallback: {
+                [API_POSTS]: posts
+            }
+        }
+    };
+}
 
 
 export default Blog
