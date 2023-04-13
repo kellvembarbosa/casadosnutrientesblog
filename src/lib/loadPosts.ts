@@ -1,5 +1,5 @@
 const fetcher = (url: string, options: {
-  'slug': string
+  slug: string
 }) => fetch(url, {
   body: JSON.stringify(options),
   method: 'POST',
@@ -11,7 +11,7 @@ const fetcher = (url: string, options: {
 const loadPosts = (slug: string) => {
   try {
     const resPostPage = fetcher(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/post`, {
-      slug: slug ?? ''
+      slug: slug
     })
     return resPostPage
   } catch (error) {
