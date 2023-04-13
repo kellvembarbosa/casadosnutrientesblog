@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import Post from '../components/Post';
 import { prisma } from '@/lib/prisma'
 import loadPosts from '../../lib/loadPosts'
+import Post from '@/components/Post';
 
 interface Data {
   post: {
