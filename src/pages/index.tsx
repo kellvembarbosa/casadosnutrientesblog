@@ -13,11 +13,12 @@ type Data = {
     posts: post[],
     imagesSTR: string[]
 }
+const API_POSTS = `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/posts`
 
 const Blog: NextPage = (fallback) => {
 
     const [isLoading, setLoading] = useState(false)
-    const { data, error } = useSWR<Data>(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/posts`, fetcher)
+    const { data, error } = useSWR<Data>(API_POSTS, fetcher)
 
     if (error) return <div>An error occured.</div>
     if (!data) return <PacmanLoader
@@ -97,7 +98,6 @@ const fetcher = (url: string) => fetch(url, {
 }).then((res) => res.json());
 
 export async function getServerSideProps() {
-    const API_POSTS = `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/posts`
     const { posts } = await fetcher(API_POSTS);
 
     return {
