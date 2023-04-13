@@ -75,7 +75,7 @@ const Post: React.FC<Data> = ({
         <div className="flex flex-wrap mb-2 mt-3">
           <span className="text-gray-500 text-base mr-2">Categoria:</span>
           <Link
-            href={category.slug ?? '#'}>
+            href={`/categories/${category.slug}` ?? '#'}>
             <span className="text-gray-500 text-sm font-bold">{category.name}</span>
           </Link>
         </div>
@@ -93,8 +93,6 @@ const Post: React.FC<Data> = ({
             ))
           }
         </div>
-
-
       </div>
     </>
   );
