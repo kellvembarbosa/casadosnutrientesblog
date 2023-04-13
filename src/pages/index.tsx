@@ -5,6 +5,8 @@ import useSWR, { SWRConfig } from 'swr'
 import Image from 'next/image';
 import { PacmanLoader } from 'react-spinners';
 import { useState } from 'react';
+import Menu from '@/components/Menu';
+import Footer from '@/components/Footer';
 
 type Data = {
     posts: post[],
@@ -70,6 +72,7 @@ const Blog: NextPage = (fallback) => {
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </SWRConfig>
     )
 }
