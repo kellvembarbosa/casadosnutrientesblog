@@ -66,12 +66,13 @@ const Post: React.FC<Data> = ({
         <p className="text-white text-lg my-4 text-center">{content}</p>
         <div className="relative w-96 h-196 cursor-pointer" onClick={handleImageClick}>
           <Image
-            src={`data:image/png;base64,${imagesSTR}`}
+            src={`data:image/webP;base64,${imagesSTR}`}
             style={{
               objectFit: 'cover',
               width: 600,
               height: 256
-            }} alt="post thumbnail"
+            }} 
+            alt={title}
             width={600}
             height={600} />
           <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">

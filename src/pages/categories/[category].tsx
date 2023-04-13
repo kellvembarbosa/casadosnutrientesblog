@@ -43,8 +43,8 @@ const CategoryPage: NextPage<PropsCategoryPage> = ({ serializabledPost }) => {
                                             width: 600,
                                             height: 256
                                         }}
-                                            alt={''}
-                                            src={`data:image/png;base64,${post.image}`}
+                                            alt={post.title}
+                                            src={`data:image/webP;base64,${post.image}`}
                                             width={600}
                                             height={600} />
                                     </div>

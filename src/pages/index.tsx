@@ -61,7 +61,7 @@ const Blog: NextPage = (fallback) => {
                                     <div className="h-64 bg-cover bg-center">
                                         <Image
                                             alt={''}
-                                            src={`data:image/png;base64,${images[index]}`}
+                                            src={`data:image/webP;base64,${images[index]}`}
                                             width={600}
                                             height={600}
                                             style={{

@@ -46,8 +46,8 @@ const TagPage: NextPage<PostsType> = ({ serializabledPost, nameTag }) => {
                                             width: 600,
                                             height: 256
                                         }}
-                                        alt={''}
-                                        src={`data:image/png;base64,${post.image}`}
+                                        alt={nameTag}
+                                        src={`data:image/webP;base64,${post.image}`}
                                             width={600}
                                             height={600} />
                                     </div>
