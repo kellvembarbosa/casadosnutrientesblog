@@ -48,8 +48,8 @@ const TagPage: NextPage<PostsType> = ({ serializabledPost, nameTag }) => {
                                         }}
                                         alt={''}
                                         src={`data:image/png;base64,${post.image}`}
-                                            width={1920}
-                                            height={1080} />
+                                            width={1}
+                                            height={1} />
                                     </div>
                                     <div className="px-6 py-4">
                                         <Link href={`/posts/${post.slug}`} className='block text-xl font-semibold text-white hover:text-gray-300'>

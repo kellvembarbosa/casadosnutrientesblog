@@ -62,8 +62,8 @@ const Blog: NextPage = (fallback) => {
                                         <Image
                                             alt={''}
                                             src={`data:image/png;base64,${images[index]}`}
-                                            width={1920}
-                                            height={1080}
+                                            width={1}
+                                            height={1}
                                             style={{
                                                 objectFit: 'cover',
                                                 width: 600,
