@@ -64,20 +64,20 @@ const Post: React.FC<Data> = ({
         <h1 className="text-white text-3xl text-center font-bold my-8">{title}</h1>
         <p className="text-gray-400 text-sm mt-2">Publicado em: {created_at}</p>
         <p className="text-white text-lg my-4 text-center">{content}</p>
-        <div className="relative w-96 h-196 cursor-pointer" onClick={handleImageClick}>
-          {/* <Image
+        <div className="relative w-360 h-740 cursor-pointer" onClick={handleImageClick}>
+          <Image
             src={`data:image/webP;base64,${imagesSTR}`}
             style={{
               objectFit: 'cover',
-              width: 600,
-              height: 256
+              width: 360,
+              height: 740
             }} 
             alt={title}
-            width={600}
-            height={600} /> */}
-          {/* <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+            width={360}
+            height={740} />
+          <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
             <FaPlayCircle size={128} color="#fff" />
-          </div> */}
+          </div>
           {isModalOpen && (
             <Modal>
               <div className="flex justify-center items-center h-56">
@@ -92,7 +92,7 @@ const Post: React.FC<Data> = ({
           )}
         </div>
 
-        <div className="flex flex-wrap mb-2 mt-3">
+        <div className="flex flex-wrap mb-2 mt-12">
           <span className="text-gray-500 text-base mr-2">Categoria:</span>
           <Link
             href={`/categories/${category.slug}` ?? '#'}>
