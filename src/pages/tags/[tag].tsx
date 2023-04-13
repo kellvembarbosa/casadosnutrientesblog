@@ -42,14 +42,14 @@ const TagPage: NextPage<PostsType> = ({ serializabledPost, nameTag }) => {
                                 <div key={index} className="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
                                     <div className="h-64 bg-cover bg-center">
                                         <Image style={{
-                                            objectFit: 'fill',
+                                            objectFit: 'cover',
                                             width: 600,
                                             height: 256
                                         }}
-                                            alt={''}
-                                            src={`data:image/png;base64,${post.image}`}
-                                            width={600}
-                                            height={256} />
+                                        alt={''}
+                                        src={`data:image/png;base64,${post.image}`}
+                                            width={1920}
+                                            height={1080} />
                                     </div>
                                     <div className="px-6 py-4">
                                         <Link href={`/posts/${post.slug}`} className='block text-xl font-semibold text-white hover:text-gray-300'>

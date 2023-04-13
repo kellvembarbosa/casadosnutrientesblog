@@ -45,8 +45,8 @@ const CategoryPage: NextPage<PropsCategoryPage> = ({ serializabledPost }) => {
                                         }}
                                             alt={''}
                                             src={`data:image/png;base64,${post.image}`}
-                                            width={600}
-                                            height={256} />
+                                            width={1920}
+                                            height={1080} />
                                     </div>
                                     <div className="px-6 py-4">
                                         <Link href={`/posts/${post.slug}`} className='block text-xl font-semibold text-white hover:text-gray-300'>

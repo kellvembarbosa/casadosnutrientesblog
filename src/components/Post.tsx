@@ -65,7 +65,7 @@ const Post: React.FC<Data> = ({
         <p className="text-gray-400 text-sm mt-2">Publicado em: {created_at}</p>
         <p className="text-white text-lg my-4 text-center">{content}</p>
         <div className="relative w-96 h-196 cursor-pointer" onClick={handleImageClick}>
-          <Image src={`data:image/png;base64,${imagesSTR}`} alt="post thumbnail" width={600} height={256} />
+          <Image src={`data:image/png;base64,${imagesSTR}`} alt="post thumbnail" width={1920} height={1080} />
           <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
             <FaPlayCircle size={128} color="#fff" />
           </div>

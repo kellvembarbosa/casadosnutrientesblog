@@ -46,6 +46,7 @@ const Blog: NextPage = (fallback) => {
                 <title className="text-white text-3xl text-center font-bold my-8">{'Blog Casa dos Nutrientes'}</title>
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <meta name="description" content="Este é um exemplo de uma meta descrição para uma página." />
                 {
                     //Aqui é lista de tags fornecidas pelo google keywords
                 }
@@ -58,13 +59,13 @@ const Blog: NextPage = (fallback) => {
                             return (
                                 <div key={index} className="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
                                     <div className="h-64 bg-cover bg-center">
-                                        <Image 
+                                        <Image
                                             alt={''}
                                             src={`data:image/png;base64,${images[index]}`}
-                                            width={600}
-                                            height={256}
+                                            width={1920}
+                                            height={1080}
                                             style={{
-                                                objectFit: 'fill',
+                                                objectFit: 'cover',
                                                 width: 600,
                                                 height: 256
                                             }} />
