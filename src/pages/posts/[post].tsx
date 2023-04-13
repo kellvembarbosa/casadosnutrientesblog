@@ -16,7 +16,7 @@ interface Data {
     category: {
       name: string,
       slug: string
-  }
+    }
   }
   imagesSTR: string
 }
@@ -35,7 +35,7 @@ type PropsPost = {
 // const PostPage: NextPage<PropsPost> = ({resPostPage}) 
 const PostPage: NextPage<PropsPost> = ({ resPostPage }) => {
   const { post, imagesSTR } = resPostPage
-  const {title, created_at, content, ig_url, kawai_url, tiktok_url, yt_url, post_has_tag, category} = post
+  const { title, created_at, content, ig_url, kawai_url, tiktok_url, yt_url, post_has_tag, category } = post
   return (
     <div>
       <Post
@@ -48,37 +48,37 @@ const PostPage: NextPage<PropsPost> = ({ resPostPage }) => {
         yt_url={yt_url ?? '#'}
         created_at={new Date(created_at ?? '').toLocaleDateString()}
         post_has_tag={post_has_tag}
-        category={category}        
-        />
+        category={category}
+      />
     </div>
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { params } = context
-  const slug = params!.post as string
-  const resPostPage = await loadPosts(slug)
+interface MyGetStaticProps extends GetStaticProps {
+  post: string
+}
 
-  return {
-    props: {
-      resPostPage
+export const getStaticProps = async ({ params }: { params: MyGetStaticProps }) => {
+  try {
+    const { post } = params
+    const resPostPage = await loadPosts(post)
+    return {
+      props: {
+        resPostPage
+      }
+    };
+  } catch (error) {
+    console.error(error)
+    return {
+      notFound: true
     }
-  };
+  }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const getPaths = await prisma.post.findMany({
     select: {
-      title: false,
-      created_at: false,
-      content: false,
       slug: true,
-      idpost: false,
-      image: false,
-      ig_url: false,
-      kawai_url: false,
-      tiktok_url: false,
-      yt_url: false
     }
   })
   const paths = getPaths.map(path => ({
