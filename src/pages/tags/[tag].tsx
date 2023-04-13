@@ -41,7 +41,7 @@ const TagPage: NextPage<PostsType> = ({ serializabledPost, nameTag }) => {
                             serializabledPost.map((post, index) => (
                                 <div key={index} className="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
                                     <div className="h-64 bg-cover bg-center">
-                                        <Image style={{
+                                        {/* <Image style={{
                                             objectFit: 'cover',
                                             width: 600,
                                             height: 256
@@ -49,7 +49,7 @@ const TagPage: NextPage<PostsType> = ({ serializabledPost, nameTag }) => {
                                         alt={nameTag}
                                         src={`data:image/webP;base64,${post.image}`}
                                             width={600}
-                                            height={600} />
+                                            height={600} /> */}
                                     </div>
                                     <div className="px-6 py-4">
                                         <Link href={`/posts/${post.slug}`} className='block text-xl font-semibold text-white hover:text-gray-300'>

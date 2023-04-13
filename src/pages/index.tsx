@@ -58,18 +58,16 @@ const Blog: NextPage = (fallback) => {
                         {data.posts.map((post, index) => {
                             return (
                                 <div key={index} className="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
-                                    <div className="h-64 bg-cover bg-center">
-                                        <Image
-                                            alt={''}
-                                            src={`data:image/webP;base64,${images[index]}`}
-                                            width={600}
-                                            height={600}
-                                            style={{
-                                                objectFit: 'cover',
-                                                width: 600,
-                                                height: 256
-                                            }} />
-                                    </div>
+                                    {/* <Image
+                                        alt={''}
+                                        src={`data:image/webP;base64,${images[index]}`}
+                                        width={600}
+                                        height={600}
+                                        style={{
+                                            objectFit: 'cover',
+                                            width: 600,
+                                            height: 256
+                                        }} /> */}
                                     <div className="px-6 py-4">
                                         <Link onClick={() =>
                                             setLoading(true)}
