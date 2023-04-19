@@ -100,7 +100,7 @@ const Post: React.FC<Data> = ({
           </Link>
         </div>
         <div className="flex flex-wrap">
-          <span className="text-gray-500 text-base mr-2">Tags:</span>
+          <span className="text-gray-500 text-base text-center mr-2">Tags:</span>
           {
             post_has_tag?.map((tag, index) => (
               <Link
