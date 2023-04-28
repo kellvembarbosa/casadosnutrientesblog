@@ -7,6 +7,7 @@ import { PacmanLoader } from 'react-spinners';
 import { useState } from 'react';
 import Footer from '@/components/Footer';
 import Head from 'next/head';
+import Menu from '@/components/Menu';
 
 type Data = {
     posts: post[],
@@ -51,6 +52,7 @@ const Blog: NextPage = (fallback) => {
                     //Aqui é lista de tags fornecidas pelo google keywords
                 }
             </Head>
+            <Menu />
             <main className="bg-gray-800 min-h-screen">
                 <div className="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
                     <h1 className="text-4xl text-center font-bold text-white">Blog Casa dos Nutrientes</h1>
@@ -60,15 +62,15 @@ const Blog: NextPage = (fallback) => {
                                 <div key={index} className="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
                                     <div className="h-64 bg-cover bg-center">
                                         <Image
-                                        alt={''}
-                                        src={`data:image/webP;base64,${images[index]}`}
-                                        width={600}
-                                        height={256}
-                                        style={{
-                                            objectFit: 'cover',
-                                            width: 600,
-                                            height: 256
-                                        }} />
+                                            alt={''}
+                                            src={`data:image/webP;base64,${images[index]}`}
+                                            width={600}
+                                            height={256}
+                                            style={{
+                                                objectFit: 'cover',
+                                                width: 600,
+                                                height: 256
+                                            }} />
                                     </div>
                                     <div className="px-6 py-4">
                                         <Link onClick={() =>

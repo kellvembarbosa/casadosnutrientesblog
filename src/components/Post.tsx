@@ -6,6 +6,7 @@ import { FaPlayCircle } from 'react-icons/fa';
 import Link from 'next/link';
 import Head from 'next/head';
 import Footer from './Footer';
+import Menu from './Menu';
 
 interface Data {
   title: string
@@ -60,6 +61,7 @@ const Post: React.FC<Data> = ({
           <meta name="keywords" content={keywords.join(', ')}></meta>
         }
       </Head>
+      <Menu />
       <main className="flex flex-col m-1 sm:m-10 p-5 items-center justify-center min-h-screen bg-gray-900 rounded-lg overflow-hidden shadow-lg">
         <h1 className="text-white text-3xl text-center font-bold my-8">{title}</h1>
         <p className="text-gray-400 text-sm mt-2">Publicado em: {created_at}</p>
@@ -69,12 +71,12 @@ const Post: React.FC<Data> = ({
             src={`data:image/webP;base64,${imagesSTR}`}
             style={{
               objectFit: 'cover',
-              width: 360,
-              height: 740
+              width: 252,
+              height: 518
             }} 
             alt={title}
-            width={360}
-            height={740} />
+            width={252}
+            height={518} />
           <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
             <FaPlayCircle size={128} color="#fff" />
           </div>
@@ -92,15 +94,15 @@ const Post: React.FC<Data> = ({
           )}
         </div>
 
-        <div className="flex flex-wrap mb-2 mt-12">
+        <div className="flex flex-wrap mb-2 justify-center mt-12">
           <span className="text-gray-500 text-base mr-2">Categoria:</span>
           <Link
             href={`/categories/${category.slug}` ?? '#'}>
             <span className="text-gray-500 text-sm font-bold">{category.name}</span>
           </Link>
         </div>
-        <div className="flex flex-wrap">
-          <span className="text-gray-500 text-base text-center mr-2">Tags:</span>
+        <div className="flex flex-wrap justify-center">
+          <span className="text-gray-500 text-base mr-2">Tags:</span>
           {
             post_has_tag?.map((tag, index) => (
               <Link

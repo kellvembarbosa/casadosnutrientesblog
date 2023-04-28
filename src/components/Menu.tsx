@@ -1,7 +1,16 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 
 const Menu = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const handleMenuClick = () => {
+        setIsMenuOpen(!isMenuOpen);
+        console.log(isMenuOpen);
+
+    };
+    // <button className="text-white" onClick={handleMenuClick}>Teste</button>
+
     return (
         <nav className="bg-gray-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,7 +42,8 @@ const Menu = () => {
                     </div>
                     <div className="flex items-center sm:hidden">
                         {/* <!-- Botão "hamburguer" para exibir o menu suspenso em telas menores --> */}
-                        <button type="button" className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <button type="button" className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded={isMenuOpen ? 'true' : 'false'}
+                            onClick={handleMenuClick}>
                             <span className="sr-only">Abrir menu principal</span>
                             {/* <!-- Ícone "hamburguer" --> */}
                             <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -44,15 +54,30 @@ const Menu = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
+
                     </div>
                 </div>
 
             </div>
             {/* <!-- Menu suspenso que é exibido em telas menores --> */}
-            <div className="hidden sm:hidden" id="mobile-menu">
+            <div
+                className={`${isMenuOpen ? 'block' : 'hidden'
+                    } sm:hidden`}
+                id="mobile-menu"
+            >
                 <div className="px-2 pt-2 pb-3 space-y-1">
-                    <Link href="/about_us" className="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Sobre nós</Link>
-                    <Link href="/privacy_policy" className="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Política de Privacidade</Link>
+                    <Link
+                        href="/about_us"
+                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+                    >
+                        Sobre nós
+                    </Link>
+                    <Link
+                        href="/privacy_policy"
+                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+                    >
+                        Política de Privacidade
+                    </Link>
                 </div>
             </div>
         </nav>

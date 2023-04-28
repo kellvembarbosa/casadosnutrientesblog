@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Head from 'next/head'
 import Footer from '@/components/Footer'
+import Menu from '@/components/Menu'
 
 type PostsType = {
     serializabledPost: {
@@ -33,6 +34,7 @@ const TagPage: NextPage<PostsType> = ({ serializabledPost, nameTag }) => {
                     //Aqui é lista de tags fornecidas pelo google keywords
                 }
             </Head>
+            <Menu />
             <main className="bg-gray-800 min-h-screen">
                 <div className="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
                     <h1 className="text-4xl text-center font-bold text-white">{`#${nameTag}`}</h1>

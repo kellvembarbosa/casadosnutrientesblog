@@ -1,4 +1,5 @@
 import Footer from '@/components/Footer'
+import Menu from '@/components/Menu'
 import Texts, { sobreNos } from '@/lib/texts'
 import Head from 'next/head'
 import React from 'react'
@@ -11,6 +12,7 @@ const About = () => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+      <Menu />
       <Texts page='Sobre nós' text={sobreNos}></Texts>
 
       <Footer />
