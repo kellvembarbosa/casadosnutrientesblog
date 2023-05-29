@@ -15,7 +15,7 @@ model category {
 }
 
 model post {
-  idpost               Int            @default(autoincrement())
+  idpost               Int            @default(autoincrement()) @unique
   title                String         @db.VarChar(150)
   content              String         @db.MediumText
   image                Bytes          @db.MediumBlob
@@ -26,12 +26,15 @@ model post {
   created_at           DateTime?      @default(now()) @db.Timestamp(0)
   slug                 String         @unique(map: "slug_UNIQUE") @db.VarChar(150)
   category_category_id Int
+  author_idauthor      Int
+  author               author         @relation(fields: [author_idauthor], references: [idauthor], onDelete: NoAction, onUpdate: NoAction, map: "fk_post_author1")
   category             category       @relation(fields: [category_category_id], references: [category_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_post_category1")
   post_has_tag         post_has_tag[]
 
-  @@id([idpost, category_category_id])
+  @@id([idpost, category_category_id, author_idauthor])
   @@index([category_category_id], map: "fk_post_category1_idx")
-  @@unique([idpost])
+  @@index([author_idauthor], map: "fk_post_author1_idx")
+  @@unique([idpost, author_idauthor])
 }
 
 model post_has_tag {
@@ -50,4 +53,12 @@ model tag {
   tag          String?        @db.VarChar(45)
   slug         String?        @db.VarChar(45)
   post_has_tag post_has_tag[]
+}
+
+model author {
+  idauthor    Int     @id
+  name        String? @db.VarChar(45)
+  tumb        Bytes?  @db.MediumBlob
+  description String? @db.VarChar(255)
+  post        post[]
 }
