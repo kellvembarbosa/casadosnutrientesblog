@@ -7,6 +7,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model author {
+  idauthor    Int     @id
+  name        String? @db.VarChar(45)
+  tumb        Bytes?  @db.MediumBlob
+  description String? @db.VarChar(255)
+  post        post[]
+}
+
 model category {
   category_id Int     @id @default(autoincrement())
   name        String  @db.VarChar(255)
@@ -32,9 +40,8 @@ model post {
   post_has_tag         post_has_tag[]
 
   @@id([idpost, category_category_id, author_idauthor])
-  @@index([category_category_id], map: "fk_post_category1_idx")
   @@index([author_idauthor], map: "fk_post_author1_idx")
-  @@unique([idpost, author_idauthor])
+  @@index([category_category_id], map: "fk_post_category1_idx")
 }
 
 model post_has_tag {
@@ -53,12 +60,4 @@ model tag {
   tag          String?        @db.VarChar(45)
   slug         String?        @db.VarChar(45)
   post_has_tag post_has_tag[]
-}
-
-model author {
-  idauthor    Int     @id
-  name        String? @db.VarChar(45)
-  tumb        Bytes?  @db.MediumBlob
-  description String? @db.VarChar(255)
-  post        post[]
 }
