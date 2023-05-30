@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { prisma } from '@/lib/prisma'
 import loadPosts from '../../lib/loadPosts'
 import Post from '@/components/Post';
+import { author } from '@prisma/client';
 
 interface Data {
   post: {
@@ -12,6 +13,7 @@ interface Data {
     kawai_url: string
     tiktok_url: string
     yt_url: string
+    author: author
     post_has_tag: PostHasTag[],
     category: {
       name: string,
@@ -35,7 +37,7 @@ type PropsPost = {
 // const PostPage: NextPage<PropsPost> = ({resPostPage}) 
 const PostPage: NextPage<PropsPost> = ({ resPostPage }) => {
   const { post, imagesSTR } = resPostPage
-  const { title, created_at, content, ig_url, kawai_url, tiktok_url, yt_url, post_has_tag, category } = post
+  const { title, author, created_at, content, ig_url, kawai_url, tiktok_url, yt_url, post_has_tag, category } = post
   return (
       <Post
         title={title}
@@ -48,6 +50,7 @@ const PostPage: NextPage<PropsPost> = ({ resPostPage }) => {
         created_at={new Date(created_at ?? '').toLocaleDateString()}
         post_has_tag={post_has_tag}
         category={category}
+        author={author}
       />
   );
 };

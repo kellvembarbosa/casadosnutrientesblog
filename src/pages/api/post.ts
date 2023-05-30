@@ -18,6 +18,7 @@ export default async function handler(
         kawai_url: true,
         tiktok_url: true,
         yt_url: true,
+        author: true,
         category: {
           select: {
             name: true,
@@ -60,6 +61,8 @@ export default async function handler(
 
     //Precisa fazer essa separação aqui, pois no cliente não é possível utilizar image.toString('base64')
     const imagesSTR = images!.image.toString('base64')
+    console.log(post?.author.name);
+    
     // console.log(
     //   JSON.stringify({ posts: post, imagesSTR }).length
     // );

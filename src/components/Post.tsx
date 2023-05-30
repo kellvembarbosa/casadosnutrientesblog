@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Footer from './Footer';
 import Menu from './Menu';
+import { author } from '@prisma/client';
 
 interface Data {
   title: string
@@ -16,6 +17,7 @@ interface Data {
   kawai_url: string
   tiktok_url: string
   yt_url: string
+  author: author
   post_has_tag: PostHasTag[]
   imagesSTR: string
   category: {
@@ -41,7 +43,8 @@ const Post: React.FC<Data> = ({
   yt_url,
   category,
   post_has_tag,
-  imagesSTR
+  imagesSTR,
+  author
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const keywords = post_has_tag.map(tag => tag.tag.tag)
@@ -65,6 +68,7 @@ const Post: React.FC<Data> = ({
       <main className="flex flex-col m-1 sm:m-10 p-5 items-center justify-center min-h-screen bg-gray-900 rounded-lg overflow-hidden shadow-lg">
         <h1 className="text-white text-3xl text-center font-bold my-8">{title}</h1>
         <p className="text-gray-400 text-sm mt-2">Publicado em: {created_at}</p>
+        <p className="text-gray-400 text-sm mt-2">Autor: {author.name}</p>
         <p className="text-white text-lg my-4 text-center">{content}</p>
         <div className="relative w-360 h-740 cursor-pointer" onClick={handleImageClick}>
           <Image
