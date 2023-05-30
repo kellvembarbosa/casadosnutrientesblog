@@ -7,7 +7,6 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Footer from './Footer';
 import Menu from './Menu';
-import { author } from '@prisma/client';
 
 interface Data {
   title: string
@@ -17,7 +16,12 @@ interface Data {
   kawai_url: string
   tiktok_url: string
   yt_url: string
-  author: author
+  author: {
+    idauthor: number;
+    name: string | null;
+    tumb: Buffer | null;
+    description: string | null;
+}
   post_has_tag: PostHasTag[]
   imagesSTR: string
   category: {
