@@ -66,7 +66,7 @@ export default async function handler(
     // console.log(
     //   JSON.stringify({ posts: post, imagesSTR }).length
     // );
-    res.setHeader('Cache-Control', 'max-age=86400')
+    // res.setHeader('Cache-Control', 'max-age=86400')
     res.status(200).json({ post: post , imagesSTR: imagesSTR})
   } catch (error) {
     console.log(error)
