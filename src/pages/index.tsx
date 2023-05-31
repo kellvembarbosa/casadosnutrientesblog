@@ -1,13 +1,14 @@
 import { post } from '@prisma/client'
 import { NextPage } from 'next'
 import Link from 'next/link'
-import useSWR, { SWRConfig } from 'swr'
+import useSWR, { SWRConfig, Cache } from 'swr'
 import Image from 'next/image';
 import { PacmanLoader } from 'react-spinners';
 import { useState } from 'react';
 import Footer from '@/components/Footer';
 import Head from 'next/head';
 import Menu from '@/components/Menu';
+
 
 type Data = {
     posts: post[],
@@ -107,8 +108,9 @@ export async function getServerSideProps() {
         props: {
             fallback: {
                 [API_POSTS]: posts
-            }
-        }
+            },
+            revalidade: 180
+        },
     };
 }
 
