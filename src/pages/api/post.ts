@@ -61,8 +61,6 @@ export default async function handler(
 
     //Precisa fazer essa separação aqui, pois no cliente não é possível utilizar image.toString('base64')
     const imagesSTR = images!.image.toString('base64')
-    console.log(post?.author.name);
-    
     // console.log(
     //   JSON.stringify({ posts: post, imagesSTR }).length
     // );
