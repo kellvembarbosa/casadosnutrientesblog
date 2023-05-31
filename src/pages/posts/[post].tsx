@@ -58,7 +58,7 @@ const PostPage: NextPage<PropsPost> = ({ resPostPage }) => {
 interface MyGetStaticProps extends GetStaticProps {
   post: string
 }
-
+ 
 export const getStaticProps = async ({ params }: { params: MyGetStaticProps }) => {
   try {
     const { post } = params
