@@ -82,7 +82,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }
   })
   const paths = getPaths.map(path => ({
-    params: { post: path.slug }
+    params: { post: encodeURIComponent(path.slug) }
   }))
 
   return { paths, fallback: false };
