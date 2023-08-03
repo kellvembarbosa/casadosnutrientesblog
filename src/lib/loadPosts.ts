@@ -1,3 +1,5 @@
+import { post } from "@prisma/client";
+
 const fetcher = (url: string, options: {
   slug: string
 }) => fetch(url, {
