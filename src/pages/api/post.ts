@@ -19,6 +19,7 @@ export default async function handler(
         tiktok_url: true,
         yt_url: true,
         author: true,
+        image: true,
         category: {
           select: {
             name: true,
@@ -40,32 +41,7 @@ export default async function handler(
         slug: slug
       }
     })
-
-    const images = await prisma.post.findUnique({
-      select: {
-        title: false,
-        created_at: false,
-        content: false,
-        slug: false,
-        idpost: false,
-        image: true,
-        ig_url: false,
-        kawai_url: false,
-        tiktok_url: false,
-        yt_url: false
-      },
-      where: {
-        slug: slug
-      }
-    })
-
-    //Precisa fazer essa separação aqui, pois no cliente não é possível utilizar image.toString('base64')
-    const imagesSTR = images!.image.toString('base64')
-    // console.log(
-    //   JSON.stringify({ posts: post, imagesSTR }).length
-    // );
-    // res.setHeader('Cache-Control', 'max-age=86400')
-    res.status(200).json({ post: post , imagesSTR: imagesSTR})
+    res.status(200).json({ post: post })
   } catch (error) {
     console.log(error)
   }

@@ -10,7 +10,7 @@ import Menu from '@/components/Menu'
 type PostsType = {
     serializabledPost: {
         title: string;
-        image: Buffer;
+        image: string;
         content: string;
         post_has_tag: {
             tag: {
@@ -49,7 +49,7 @@ const TagPage: NextPage<PostsType> = ({ serializabledPost, nameTag }) => {
                                             height: 256
                                         }}
                                         alt={nameTag}
-                                        src={`data:image/webP;base64,${post.image}`}
+                                        src={post.image}
                                             width={600}
                                             height={600} />
                                     </div>
@@ -112,7 +112,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     const serializabledPost = posts.map(post => ({
         ...post,
-        image: post!.image.toString('base64'),
+        image: post.image,
         created_at: new Date(post.created_at!).toString()
     }));
 

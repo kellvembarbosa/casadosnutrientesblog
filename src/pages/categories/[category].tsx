@@ -108,7 +108,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     const serializabledPost = posts.map(post => ({
         ...post,
-        image: post!.image.toString('base64'),
+        image: post.image,
         created_at: new Date(post.created_at!).toString()
     }));
 

@@ -72,7 +72,7 @@ const Post: React.FC<Data> = ({
         <p className="text-white text-lg my-4 text-center">{content}</p>
         <div className="relative w-360 h-740 cursor-pointer" onClick={handleImageClick}>
           <Image
-            src={`data:image/webP;base64,${imagesSTR}`}
+            src={imagesSTR}
             style={{
               objectFit: 'cover',
               width: 252,

@@ -8,8 +8,8 @@ type Data = {
     title: string;
     content: string;
     created_at: Date | null;
-}[],
-  imagesSTR: string[]
+    image: string;
+  }[]
 }
 
 export default async function handler(
@@ -22,23 +22,14 @@ export default async function handler(
         title: true,
         created_at: true,
         content: true,
-        slug: true
-      },
-      take: 6
-    })
-    const images = await prisma.post.findMany({
-      select: {
+        slug: true,
         image: true
       },
       take: 6
     })
-    //Precisa fazer essa separação aqui, pois no cliente não é possível utilizar image.toString('base64')
-    const imagesSTR = images.map(image => image.image).map(image => image.toString('base64'))
-    // console.log(
-    //   JSON.stringify({ posts: posts, imagesSTR}).length
-    // );
+
     res.setHeader('Cache-Control', 'max-age=86400')
-    res.status(200).json({ posts: posts , imagesSTR: imagesSTR})
+    res.status(200).json({ posts: posts })
   } catch (error) {
     console.log(error)
   }

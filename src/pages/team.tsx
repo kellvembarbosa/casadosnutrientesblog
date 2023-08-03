@@ -29,7 +29,7 @@ const Equipe = ({
                     <Author
                         key={author.idauthor}
                         name={author.name as string}
-                        tumb={`data:image/webP;base64,${author.tumb}` as string}
+                        tumb={author.tumb as string}
                         description={author.description as string}
                     />
                 ))}

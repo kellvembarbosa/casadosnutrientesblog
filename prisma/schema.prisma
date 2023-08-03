@@ -8,9 +8,9 @@ datasource db {
 }
 
 model author {
-  idauthor    Int     @id
+  idauthor    Int     @id @default(autoincrement())
   name        String? @db.VarChar(45)
-  tumb        Bytes?  @db.MediumBlob
+  tumb        String? @db.VarChar(255)
   description String? @db.VarChar(255)
   post        post[]
 }
@@ -26,7 +26,7 @@ model post {
   idpost               Int            @default(autoincrement()) @unique
   title                String         @db.VarChar(150)
   content              String         @db.MediumText
-  image                Bytes          @db.MediumBlob
+  image                String         @db.VarChar(255)
   ig_url               String?        @default("#") @db.VarChar(150)
   kawai_url            String?        @default("#") @db.VarChar(150)
   tiktok_url           String         @db.VarChar(150)
@@ -39,7 +39,7 @@ model post {
   category             category       @relation(fields: [category_category_id], references: [category_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_post_category1")
   post_has_tag         post_has_tag[]
 
-  @@id([idpost, category_category_id, author_idauthor])
+  @@id([idpost, author_idauthor, category_category_id])
   @@index([author_idauthor], map: "fk_post_author1_idx")
   @@index([category_category_id], map: "fk_post_category1_idx")
 }

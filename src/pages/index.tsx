@@ -12,7 +12,6 @@ import Menu from '@/components/Menu';
 
 type Data = {
     posts: post[],
-    imagesSTR: string[]
 }
 const API_POSTS = `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/posts`
 
@@ -32,7 +31,6 @@ const Blog: NextPage = (fallback) => {
         }}
     ></PacmanLoader>
 
-    const images = data.imagesSTR.map(image => image)
     if (isLoading) return <PacmanLoader
         color='white'
         cssOverride={{
@@ -64,7 +62,7 @@ const Blog: NextPage = (fallback) => {
                                     <div className="h-64 bg-cover bg-center">
                                         <Image
                                             alt={''}
-                                            src={`data:image/webP;base64,${images[index]}`}
+                                            src={post.image}
                                             width={600}
                                             height={256}
                                             style={{

@@ -6,7 +6,6 @@ export default async function handler(
     res: NextApiResponse
   ) {
     const authors = await prisma.author.findMany()
-    const updatedAuthors = authors.map((author) => ({ ...author, tumb: author.tumb?.toString('base64') }));
     res.setHeader('Cache-Control', 'max-age=86400')
-    res.status(200).json({ updatedAuthors })
+    res.status(200).json({ authors })
   }
