@@ -13,7 +13,7 @@ const Equipe = ({
         return (
             <div className="flex flex-col min-h-screen">
                 <Head>
-                    <title className="text-white text-3xl text-center font-bold my-8">{'Blog Casa dos Nutrientes'}</title>
+                    <title className="text-white text-3xl text-center font-bold my-8">{'Equipe'}</title>
                     <meta charSet="utf-8" />
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                     <meta name="description" content="Este é um exemplo de uma meta descrição para uma página." />
@@ -22,7 +22,7 @@ const Equipe = ({
                     }
                 </Head>
                 <Menu />
-                <div className="container mx-auto flex-grow">
+                <div className="container mx-auto flex-grow m-5 bg-gray-900 rounded-lg overflow-hidden shadow-lg">
                     <h1 className="text-white text-3xl text-center font-bold my-8">Equipe</h1>
                     {
                         authors.map((author) => (

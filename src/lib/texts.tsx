@@ -91,18 +91,14 @@ const Texts = ({ text, page }: ITexts) => {
         </p>
     ));
 
-    if(!paragrafos) {
+    if (!paragrafos) {
         return <>Loading...</>
     }
 
     return (
-        <main className="flex flex-col m-1 sm:m-10 p-5 items-center justify-center min-h-screen bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+        <main className="m-1 sm:m-10 items-center justify-center bg-gray-900 rounded-lg overflow-hidden shadow-lg">
             <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg mb-10 text-center leading-6 font-medium text-white">
-                    {page}
-                </h3>
                 {paragrafos}
-
             </div>
         </main>
     )

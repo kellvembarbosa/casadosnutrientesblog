@@ -16,13 +16,15 @@ const Menu = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
-                        <div className="flex-shrink-0">
-                            <Link href="/" className="text-white font-bold text-xl">Início</Link>
+                        <div className="flex-shrink-0 ">
+                            <Link href="/" className="
+                             hover:text-gray-400
+                            text-white font-bold text-xl">Início</Link>
                         </div>
                         <div className="hidden sm:block md:block">
                             <div className="ml-10 flex items-baseline">
-                                <Link href="/about_us" className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Sobre nós</Link>
-                                <Link href="/privacy_policy" className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Política de Privacidade</Link>
+                                <Link href="/about_us" className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Sobre nós</Link>
+                                <Link href="/privacy_policy" className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Política de Privacidade</Link>
                             </div>
                         </div>
                     </div>
