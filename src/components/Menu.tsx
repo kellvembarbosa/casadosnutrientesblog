@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
+import SearchInput from './SearchInput';
 
 const Menu = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,7 +39,7 @@ const Menu = () => {
                                         <path fillRule="evenodd" d="M13.15 14.43a8 8 0 111.42-1.42l3.86 3.87a1 1 0 11-1.42 1.42l-3.86-3.87zM8 14a6 6 0 100-12 6 6 0 000 12z" clipRule="evenodd" />
                                     </svg>
                                 </div>
-                                <input id="search" name="search" className="block w-full bg-gray-900 text-white border border-gray-700 rounded-md py-2 pl-10 pr-3 leading-5 placeholder-gray-400 focus:outline-none focus:placeholder-gray-500 focus:border-gray-500 focus:ring-1 focus:ring-gray-500 focus:text-white sm:text-sm" placeholder="Pesquisar" type="search" autoComplete="off" />
+                                <SearchInput />
                             </div>
                         </div>
                     </div>

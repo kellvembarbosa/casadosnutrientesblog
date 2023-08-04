@@ -14,7 +14,7 @@ type Data = {
         slug: string;
         title: string;
         content: string;
-        created_at: Date | null;
+        created_at: Date;
         image: string;
         author: author
     }[],
@@ -64,7 +64,7 @@ const Blog: NextPage = (fallback) => {
                     <div className="min-h-min grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
                         {data.posts.map((post, index) =>
                             <TumbImage
-                                post={post}
+                                post={{...post, 'created_at': post.created_at.toString()}}
                                 setLoading={setLoading}
                                 key={index}
                             />)}
