@@ -1,5 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { prisma } from '@/lib/prisma'
+import { author } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
@@ -9,6 +10,7 @@ type Data = {
     content: string;
     created_at: Date | null;
     image: string;
+    author: author
   }[]
 }
 
@@ -23,7 +25,8 @@ export default async function handler(
         created_at: true,
         content: true,
         slug: true,
-        image: true
+        image: true,
+        author: true
       },
       take: 6,
       orderBy: {
