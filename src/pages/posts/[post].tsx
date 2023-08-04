@@ -87,6 +87,9 @@ export const getStaticProps = async ({ params }: { params: MyGetStaticProps }) =
                 equals: category.name
               }
             }
+          },
+          orderBy: {
+             created_at: 'desc'
           }
         })
         return relatedPosts

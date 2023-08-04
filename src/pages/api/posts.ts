@@ -25,7 +25,10 @@ export default async function handler(
         slug: true,
         image: true
       },
-      take: 6
+      take: 6,
+      orderBy: {
+        created_at: 'desc'
+      }
     })
 
     res.setHeader('Cache-Control', 'max-age=86400')
