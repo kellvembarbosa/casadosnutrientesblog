@@ -1,8 +1,6 @@
 import React from 'react'
-import Image from 'next/image';
-import { author } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { InferGetServerSidePropsType } from 'next';
 import Author from '@/components/Author';
 import Head from 'next/head';
 import Menu from '@/components/Menu';

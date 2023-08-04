@@ -12,7 +12,8 @@ const Author: React.FC<AuthorProps> = ({ name, tumb, description }) => {
     <div className="flex justify-center h-full">
       <div className='flex justify-center items-center h-64 w-64'>
         <div className="flex rounded-full h-36 w-36 overflow-hidden">
-          <Image src={tumb} alt={name} width={150} height={80} />
+          <Image src={tumb} alt={name} width={150} height={150} placeholder='blur'
+            blurDataURL={tumb} />
         </div>
       </div>
       <div className='flex items-center justify-center  h-64 w-4/5'>

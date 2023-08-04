@@ -1,7 +1,5 @@
 import { NextPage } from 'next'
-import Link from 'next/link'
-import useSWR, { SWRConfig, Cache } from 'swr'
-import Image from 'next/image';
+import useSWR, { SWRConfig } from 'swr'
 import { PacmanLoader } from 'react-spinners';
 import { useState } from 'react';
 import Footer from '@/components/Footer';
