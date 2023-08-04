@@ -40,7 +40,7 @@ const Search: NextPage<Posts> = ({ serializabledPosts, search }) => {
         <Menu />
         <main className="bg-gray-800 min-h-screen">
           <div className="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
-            <h1 className="text-4xl text-center font-bold text-white">{`Resultados para: "${search}"`}</h1>
+            <h1 className="text-4xl mx-auto text-center font-bold text-white">{(data.length > 0) ? `Resultados para: "${search}"` : `Sem resultados para: "${search}"`}</h1>
             <div className="min-h-min grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
               {data.map((post, index) =>
                 <TumbImage
