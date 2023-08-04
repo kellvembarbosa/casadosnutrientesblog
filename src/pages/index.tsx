@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import Head from 'next/head';
 import Menu from '@/components/Menu';
 import { author } from '@prisma/client';
+import TumbImage from '@/components/TumbImage';
 
 
 type Data = {
@@ -63,45 +64,12 @@ const Blog: NextPage = (fallback) => {
                 <div className="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
                     <h1 className="text-4xl text-center font-bold text-white">Blog Casa dos Nutrientes</h1>
                     <div className="min-h-min grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                        {data.posts.map((post, index) => {
-                            return (
-                                <div key={index} className="relative w-full h-80 bg-gray-900 rounded-lg overflow-hidden shadow-lg">
-                                    <div style={{ width: '100%', height: '50%', position: 'relative' }}>
-                                        <Image
-                                            alt={''}
-                                            src={post.image}
-                                            fill={true}
-                                            style={{
-                                                objectFit: "cover",
-                                                objectPosition: "center center"
-                                            }}
-                                            placeholder='blur'
-                                            blurDataURL={post.image}
-                                        />
-                                    </div>
-
-                                    <div className="absolute bottom-0 left-0 w-full h-1/2">
-                                        <Link onClick={() =>
-                                            setLoading(true)}
-                                            href={`/posts/${post.slug}`}
-                                            className='block px-2 text-lg font-semibold text-white hover:text-gray-300 truncate'>
-                                            {post.title}
-                                        </Link>
-                                        <div className='px-2'>
-                                            <p className="text-gray-400">{new Date(post.created_at ?? '').toLocaleDateString() + ` por ${post.author.name}`}</p>
-                                        </div>
-                                        <div className='absolute bottom-0 left-0 py-5 px-2'>
-                                            <p className="text-gray-400 line-clamp-3">{post.content}</p>
-                                        </div>
-
-                                    </div>
-
-
-
-
-                                </div>
-                            )
-                        })}
+                        {data.posts.map((post, index) =>
+                            <TumbImage
+                                post={post}
+                                setLoading={setLoading}
+                                key={index}
+                            />)}
                     </div>
                 </div>
             </main>

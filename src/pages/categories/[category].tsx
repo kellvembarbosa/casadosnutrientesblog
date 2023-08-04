@@ -45,6 +45,8 @@ const CategoryPage: NextPage<PropsCategoryPage> = ({ serializabledPost }) => {
                                             width: 600,
                                             height: 256
                                         }}
+                                            placeholder='blur'
+                                            blurDataURL={post.image}
                                             alt={post.title}
                                             src={post.image}
                                             width={600}

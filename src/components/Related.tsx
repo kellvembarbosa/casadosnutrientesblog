@@ -34,6 +34,7 @@ const Related = (props: IProps) => {
                                     objectFit: "cover",
                                     objectPosition: "center center"
                                 }}
+                                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                                 placeholder='blur'
                                 blurDataURL={post.image}
                             />

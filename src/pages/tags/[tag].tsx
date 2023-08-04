@@ -48,8 +48,10 @@ const TagPage: NextPage<PostsType> = ({ serializabledPost, nameTag }) => {
                                             width: 600,
                                             height: 256
                                         }}
-                                        alt={nameTag}
-                                        src={post.image}
+                                            alt={nameTag}
+                                            src={post.image}
+                                            placeholder='blur'
+                                            blurDataURL={post.image}
                                             width={600}
                                             height={600} />
                                     </div>

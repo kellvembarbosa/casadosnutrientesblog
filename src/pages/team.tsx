@@ -11,6 +11,8 @@ import Footer from '@/components/Footer';
 const Equipe = ({
     authors,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+    console.log(authors);
+    
     return (
         <div className="flex flex-col min-h-screen">
             <Head>
@@ -25,14 +27,14 @@ const Equipe = ({
             <Menu />
             <div className="container mx-auto flex-grow">
                 <h1 className="text-white text-3xl text-center font-bold my-8">Equipe</h1>
-                {authors.map((author) => (
+                {/* {authors.map((author) => (
                     <Author
                         key={author.idauthor}
                         name={author.name as string}
                         tumb={author.tumb as string}
                         description={author.description as string}
                     />
-                ))}
+                ))} */}
             </div>
             <Footer />
         </div>
