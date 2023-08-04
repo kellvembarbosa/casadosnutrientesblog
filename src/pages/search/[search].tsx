@@ -27,7 +27,7 @@ const Search: NextPage<Posts> = ({ serializabledPosts, search }) => {
 
   useEffect(() => {
     setData(serializabledPosts)
-  }, [])
+  }, [serializabledPosts])
 
   if (data) {
     return (
