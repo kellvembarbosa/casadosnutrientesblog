@@ -31,41 +31,75 @@ interface Tag {
 }
 
 type PropsPost = {
-  resPostPage: Data
+  resPostPage: Data,
+  relatedPosts: {
+    title: string;
+    content: string;
+    slug: string;
+    image: string;
+  }[] | undefined
 }
 
 // const PostPage: NextPage<PropsPost> = ({resPostPage}) 
-const PostPage: NextPage<PropsPost> = ({ resPostPage }) => {
+const PostPage: NextPage<PropsPost> = ({ resPostPage, relatedPosts }) => {
   const { post } = resPostPage
   const { title, author, created_at, content, ig_url, kawai_url, tiktok_url, yt_url, post_has_tag, image, category, } = post
   return (
-      <Post
-        title={title}
-        content={content}
-        imagesSTR={image}
-        ig_url={ig_url ?? '#'}
-        kawai_url={kawai_url ?? '#'}
-        tiktok_url={tiktok_url}
-        yt_url={yt_url ?? '#'}
-        created_at={new Date(created_at ?? '').toLocaleDateString()}
-        post_has_tag={post_has_tag}
-        category={category}
-        author={author}
-      />
+    <Post
+      title={title}
+      content={content}
+      imagesSTR={image}
+      ig_url={ig_url ?? '#'}
+      kawai_url={kawai_url ?? '#'}
+      tiktok_url={tiktok_url}
+      yt_url={yt_url ?? '#'}
+      created_at={new Date(created_at ?? '').toLocaleDateString()}
+      post_has_tag={post_has_tag}
+      category={category}
+      author={author}
+      relatedPosts={relatedPosts}
+    />
   );
 };
 
 interface MyGetStaticProps extends GetStaticProps {
   post: string
 }
- 
+
 export const getStaticProps = async ({ params }: { params: MyGetStaticProps }) => {
   try {
     const { post } = params
     const resPostPage = await loadPosts(post)
+    const { category } = resPostPage.post
+    const getRelatedPosts = async () => {
+      try {
+        const relatedPosts = await prisma.post.findMany({
+          select: {
+            title: true,
+            content: true,
+            slug: true,
+            image: true
+          },
+          take: 3,
+          where: {
+            category: {
+              name: {
+                equals: category.name
+              }
+            }
+          }
+        })
+        return relatedPosts
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    const relatedPosts = await getRelatedPosts()
+
     return {
       props: {
-        resPostPage
+        resPostPage,
+        relatedPosts
       }
     };
   } catch (error) {
@@ -81,9 +115,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
       slug: true,
     }
   })
-  const paths = getPaths.map(path => ({
-    params: { post: encodeURIComponent(path.slug) }
-  }))
+
+
+  const paths = getPaths.map(path => {
+    let pathSlug
+    if (process.env.NODE_ENV !== 'production') {
+      pathSlug = path.slug
+    } else {
+      pathSlug = encodeURIComponent(path.slug)
+    }
+    return ({
+      params: { post: pathSlug }
+    })
+  })
 
   return { paths, fallback: false };
 }

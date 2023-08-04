@@ -8,6 +8,7 @@ import Head from 'next/head';
 import Footer from './Footer';
 import Menu from './Menu';
 import { author } from '@prisma/client';
+import Related from './Related';
 
 interface Data {
   title: string
@@ -20,6 +21,12 @@ interface Data {
   author: author
   post_has_tag: PostHasTag[]
   imagesSTR: string
+  relatedPosts: {
+    title: string;
+    content: string;
+    slug: string;
+    image: string;
+  }[] | undefined
   category: {
     name: string,
     slug: string
@@ -44,7 +51,8 @@ const Post: React.FC<Data> = ({
   category,
   post_has_tag,
   imagesSTR,
-  author
+  author,
+  relatedPosts
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const keywords = post_has_tag.map(tag => tag.tag.tag)
@@ -77,7 +85,7 @@ const Post: React.FC<Data> = ({
               objectFit: 'cover',
               width: 252,
               height: 518
-            }} 
+            }}
             alt={title}
             width={252}
             height={518} />
@@ -97,6 +105,8 @@ const Post: React.FC<Data> = ({
             </Modal>
           )}
         </div>
+        
+        <Related title={title} relatedPosts={relatedPosts} />
 
         <div className="flex flex-wrap mb-2 justify-center mt-12">
           <span className="text-gray-500 text-base mr-2">Categoria:</span>
