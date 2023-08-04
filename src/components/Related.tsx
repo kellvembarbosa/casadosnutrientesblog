@@ -18,7 +18,7 @@ const Related = (props: IProps) => {
     const { relatedPosts, title } = props
     //bg-gray-900
     // Filtrar os relatedPosts que têm um título diferente do título passado via props
-  const filteredPosts = relatedPosts?.filter((post) => post.title !== title);
+    const filteredPosts = relatedPosts?.filter((post) => post.title !== title);
 
     return (
         <div className="min-h-min grid grid-cols-1 sm:grid-cols-3 gap-4 mt-32">
@@ -34,6 +34,8 @@ const Related = (props: IProps) => {
                                     objectFit: "cover",
                                     objectPosition: "center center"
                                 }}
+                                placeholder='blur'
+                                blurDataURL={post.image}
                             />
                         </div>
 

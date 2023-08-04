@@ -86,6 +86,8 @@ const Post: React.FC<Data> = ({
               width: 252,
               height: 518
             }}
+            placeholder='blur'
+            blurDataURL={imagesSTR}
             alt={title}
             width={252}
             height={518} />
@@ -105,7 +107,7 @@ const Post: React.FC<Data> = ({
             </Modal>
           )}
         </div>
-        
+
         <Related title={title} relatedPosts={relatedPosts} />
 
         <div className="flex flex-wrap mb-2 justify-center mt-12">

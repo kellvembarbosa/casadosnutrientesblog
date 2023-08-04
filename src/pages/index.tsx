@@ -75,6 +75,8 @@ const Blog: NextPage = (fallback) => {
                                                 objectFit: "cover",
                                                 objectPosition: "center center"
                                             }}
+                                            placeholder='blur'
+                                            blurDataURL={post.image}
                                         />
                                     </div>
 
