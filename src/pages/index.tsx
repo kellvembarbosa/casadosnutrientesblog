@@ -60,7 +60,7 @@ const Blog: NextPage = (fallback) => {
             <Menu />
             <main className="bg-gray-800 min-h-screen">
                 <div className="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
-                    <h1 className="text-4xl text-center font-bold text-white">Blog Casa dos Nutrientes</h1>
+                    <h1 className="text-4xl text-center font-bold text-white">🍆🥦🍅 Blog - Casa dos Nutrientes 🍉🥕🍌</h1>
                     <div className="min-h-min grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
                         {data.posts.map((post, index) =>
                             <TumbImage
