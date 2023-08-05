@@ -1,6 +1,6 @@
 import React from 'react'
 import { prisma } from '@/lib/prisma';
-import { InferGetServerSidePropsType } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import Author from '@/components/Author';
 import Head from 'next/head';
 import Menu from '@/components/Menu';
@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 
 const Equipe = ({
     authors,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
     if (Array.isArray(authors)) {
         return (
             <div className="flex flex-col min-h-screen">
@@ -40,7 +40,7 @@ const Equipe = ({
     }
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
     const authors = await prisma.author.findMany();
     return { props: { authors } };
 };
