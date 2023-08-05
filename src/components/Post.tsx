@@ -60,6 +60,28 @@ const Post: React.FC<Data> = ({
   const handleImageClick = () => {
     setIsModalOpen(!isModalOpen);
   };
+  function createSummary(text: string) {
+    const words = text.split(' ');
+    let summary = '';
+    let wordCount = 0;
+  
+    for (const word of words) {
+      if (wordCount + word.length <= 25) {
+        summary += word + ' ';
+        wordCount += word.length + 1; // +1 to account for the space
+      } else {
+        break;
+      }
+    }
+  
+    // Remove trailing space and any extra words that might be added due to loop breaking
+    summary = summary.trim();
+  
+    return summary;
+  }
+
+  const summary = createSummary(content) + ' ...';
+  
 
   return (
     <>
@@ -70,6 +92,11 @@ const Post: React.FC<Data> = ({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         {
           <meta name="keywords" content={keywords.join(', ')}></meta>
+        }
+        {
+          <meta
+          name="description"
+          content={summary} />
         }
       </Head>
       <Menu />
