@@ -21,41 +21,41 @@ const Blog: NextPage = (fallback) => {
                 }
             </Head>
             <Menu />
-            <SWRConfig value={{ fallback }}>
-                <MainPageComponent />
-            </SWRConfig>
+            <MainPageComponent />
+            {/* <SWRConfig value={{ fallback }}>
+            </SWRConfig> */}
             <Footer />
         </>
     )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-    const posts = await prisma.post.findMany({
-        select: {
-            title: true,
-            created_at: true,
-            content: true,
-            slug: true,
-            image: true,
-            author: true
-        },
-        take: 6,
-        orderBy: {
-            created_at: 'desc'
-        }
-    })
-    const posts_serializated = posts.map(post => ({
-        ...post,
-        created_at: new Date(post.created_at!).toString()
-    }))
-    return {
-        props: {
-            fallback: {
-                '/api/posts': posts_serializated
-            }
-        }
-    }
-}
+// export const getStaticProps: GetStaticProps = async () => {
+//     const posts = await prisma.post.findMany({
+//         select: {
+//             title: true,
+//             created_at: true,
+//             content: true,
+//             slug: true,
+//             image: true,
+//             author: true
+//         },
+//         take: 6,
+//         orderBy: {
+//             created_at: 'desc'
+//         }
+//     })
+//     const posts_serializated = posts.map(post => ({
+//         ...post,
+//         created_at: new Date(post.created_at!).toString()
+//     }))
+//     return {
+//         props: {
+//             fallback: {
+//                 '/api/posts': posts_serializated
+//             }
+//         }
+//     }
+// }
 
 
 export default Blog
