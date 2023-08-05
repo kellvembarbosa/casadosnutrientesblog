@@ -13,11 +13,10 @@ interface Iprops {
         image: string;
         author: author;
     },
-    setLoading: (value: SetStateAction<boolean>) => void
 }
 
 const TumbImage = (props: Iprops) => {
-    const {post, setLoading} = props
+    const {post } = props
 
     return (
         <div className="relative w-full h-80 bg-gray-900 rounded-lg overflow-hidden shadow-lg">
@@ -37,8 +36,7 @@ const TumbImage = (props: Iprops) => {
             </div>
 
             <div className="absolute bottom-0 left-0 w-full h-1/2">
-                <Link onClick={() =>
-                    setLoading(true)}
+                <Link 
                     href={`/posts/${post.slug}`}
                     className='block px-2 text-lg font-semibold text-white hover:text-gray-300 truncate'>
                     {post.title}

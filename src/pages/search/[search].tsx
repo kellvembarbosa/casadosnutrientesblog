@@ -45,7 +45,6 @@ const Search: NextPage<Posts> = ({ serializabledPosts, search }) => {
               {data.map((post, index) =>
                 <TumbImage
                   post={post}
-                  setLoading={() => { }}
                   key={index}
                 />)}
             </div>
