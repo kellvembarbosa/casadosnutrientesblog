@@ -47,8 +47,18 @@ const MainPageComponent: React.FC = () => {
             revalidateIfStale: false
         });
     if (error) return <div>An error occurred.</div>;
-    if (!data) return <PacmanLoader color="white" />;
-    if (isLoading) return <PacmanLoader color="white" />;
+    if (!data) return <PacmanLoader color="white" cssOverride={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)'
+    }} />;
+    if (isLoading) return <PacmanLoader color="white" cssOverride={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)'
+    }} />;
 
     const allPosts = data.flatMap((page) => page.posts);
 
