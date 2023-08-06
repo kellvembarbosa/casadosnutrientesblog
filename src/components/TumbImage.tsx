@@ -2,6 +2,7 @@ import { author } from '@prisma/client';
 import React, { SetStateAction } from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
 
 
 interface Iprops {
@@ -45,7 +46,7 @@ const TumbImage = (props: Iprops) => {
                     <p className="text-gray-400">{new Date(post.created_at ?? '').toLocaleDateString() + ` por ${post.author.name}`}</p>
                 </div>
                 <div className='absolute bottom-0 left-0 py-5 px-2'>
-                    <p className="text-gray-400 line-clamp-3">{post.content}</p>
+                    <ReactMarkdown className="text-gray-400 line-clamp-3">{post.content}</ReactMarkdown>
                 </div>
             </div>
         </div>

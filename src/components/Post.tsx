@@ -9,6 +9,7 @@ import Footer from './Footer';
 import Menu from './Menu';
 import { author } from '@prisma/client';
 import Related from './Related';
+import ReactMarkdown from 'react-markdown';
 
 interface Data {
   title: string
@@ -64,7 +65,7 @@ const Post: React.FC<Data> = ({
     const words = text.split(' ');
     let summary = '';
     let wordCount = 0;
-  
+
     for (const word of words) {
       if (wordCount + word.length <= 25) {
         summary += word + ' ';
@@ -73,19 +74,18 @@ const Post: React.FC<Data> = ({
         break;
       }
     }
-  
+
     // Remove trailing space and any extra words that might be added due to loop breaking
     summary = summary.trim();
-  
+
     return summary;
   }
 
   const summary = createSummary(content) + ' ...';
-  
+
 
   return (
     <>
-      {/* <Link href={`/`} className='fixed top-0 right-0 m-4 p-2 rounded-full bg-gray-400 text-base font-semibold text-gray-800 hover:text-gray-300'>Voltar</Link> */}
       <Head>
         <title className="text-white text-3xl text-center font-bold my-8">{title}</title>
         <meta charSet="utf-8" />
@@ -95,16 +95,17 @@ const Post: React.FC<Data> = ({
         }
         {
           <meta
-          name="description"
-          content={summary} />
+            name="description"
+            content={summary} />
         }
       </Head>
       <Menu />
+
       <main className="flex flex-col m-1 sm:m-10 p-5 items-center justify-center min-h-screen bg-gray-900 rounded-lg overflow-hidden shadow-lg">
         <h1 className="text-white text-3xl text-center font-bold my-8">{title}</h1>
         <p className="text-gray-400 text-sm mt-2">Publicado em: {created_at}</p>
         <p className="text-gray-400 text-sm mt-2">Autor: {author.name}</p>
-        <p className="text-white text-lg my-4 text-center">{content}</p>
+        <ReactMarkdown children={content} className="text-slate-200 text-center leading-6 tracking-wide  text-lg my-4" />
         <div className="relative w-360 h-740 cursor-pointer" onClick={handleImageClick}>
           <Image
             src={imagesSTR}
