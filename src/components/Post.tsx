@@ -105,7 +105,7 @@ const Post: React.FC<Data> = ({
         <h1 className="text-white text-3xl text-center font-bold my-8">{title}</h1>
         <p className="text-gray-400 text-sm mt-2">Publicado em: {created_at}</p>
         <p className="text-gray-400 text-sm mt-2">Autor: {author.name}</p>
-        <ReactMarkdown children={content} className="text-slate-200 text-center leading-6 tracking-wide  text-lg my-4" />
+        <ReactMarkdown className="text-slate-200 text-center leading-6 tracking-wide  text-lg my-4" >{content}</ReactMarkdown>
         <div className="relative w-360 h-740 cursor-pointer" onClick={handleImageClick}>
           <Image
             src={imagesSTR}
