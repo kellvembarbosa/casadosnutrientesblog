@@ -46,7 +46,7 @@ const TumbImage = (props: Iprops) => {
                     <p className="text-gray-400">{new Date(post.created_at ?? '').toLocaleDateString() + ` por ${post.author.name}`}</p>
                 </div>
                 <div className='absolute bottom-0 left-0 py-5 px-2'>
-                    <ReactMarkdown className="text-gray-400 line-clamp-3">{post.content}</ReactMarkdown>
+                    <p className="text-gray-400 line-clamp-3">{post.content}</p>
                 </div>
             </div>
         </div>
