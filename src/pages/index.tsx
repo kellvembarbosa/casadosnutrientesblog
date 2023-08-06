@@ -8,7 +8,9 @@ import MainPageComponent from '@/components/MainPageComponent';
 import { indexKeywords } from '@/lib/tags';
 
 interface IProps {
-    fallback: any
+    fallback: {
+        [key: string]: any;
+    } | undefined
 }
 
 const Blog: NextPage<IProps> = ({ fallback }) => {
@@ -25,7 +27,7 @@ const Blog: NextPage<IProps> = ({ fallback }) => {
             </Head>
             <Menu />
             <SWRConfig value={{ fallback }}>
-                <MainPageComponent fallback={fallback} />
+                <MainPageComponent />
             </SWRConfig>
             <Footer />
         </>
