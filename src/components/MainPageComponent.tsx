@@ -48,20 +48,20 @@ const MainPageComponent: React.FC = () => {
         });
     if (error) return <div>An error occurred.</div>;
     if (!data) return <div className='min-h-screen'>
-        <PacmanLoader color="white" cssOverride={{
+        {/* <PacmanLoader color="white" cssOverride={{
             position: 'absolute',
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-        }}></PacmanLoader>
+        }}></PacmanLoader> */}
     </div>;
     if (isLoading) return <div className='min-h-screen'>
-        <PacmanLoader color="white" cssOverride={{
+        {/* <PacmanLoader color="white" cssOverride={{
             position: 'absolute',
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-        }}></PacmanLoader>
+        }}></PacmanLoader> */}
     </div>;
 
     const allPosts = data.flatMap((page) => page.posts);
