@@ -1,4 +1,4 @@
-import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
+import { GetServerSideProps, GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import { SWRConfig } from 'swr'
 import Footer from '@/components/Footer';
 import Head from 'next/head';
@@ -34,7 +34,7 @@ const Blog: NextPage<IProps> = ({ fallback }) => {
     )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
     const posts = await prisma.post.findMany({
         select: {
             title: true,
