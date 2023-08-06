@@ -4,6 +4,7 @@ import { PacmanLoader } from 'react-spinners';
 import useSWRInfinite from 'swr/infinite';
 import { author } from '@prisma/client';
 import { useSWRConfig } from 'swr';
+import useSWR from 'swr'
 
 interface Post {
     idpost: number;
@@ -48,7 +49,7 @@ const MainPageComponent: React.FC = () => {
     //         revalidateIfStale: false,
     //         fallback: fallback,
     //     });
-    const { data, error, isLoading } = useSWR('/api/posts', fetcher);
+    const { data, error, isLoading, isValidating } = useSWR('/api/posts', fetcher)
     if (error) return <div>An error occurred.</div>;
     if (!data) return <div className='min-h-screen'>
         {/* <PacmanLoader color="white" cssOverride={{
@@ -94,7 +95,3 @@ const MainPageComponent: React.FC = () => {
 };
 
 export default MainPageComponent;
-function useSWR(arg0: string, fetcher: (url: string) => Promise<any>): { data: any; error: any; isLoading: any; } {
-    throw new Error('Function not implemented.');
-}
-
