@@ -29,9 +29,9 @@ const Footer = () => {
                             <div>
                                 <h1 className="text-sm leading-5 font-semibold tracking-wider text-gray-400 uppercase">Redes sociais</h1>
                                 <ul className="mt-4 space-y-4">
-                                    <li><Link href="#" className="text-base leading-6 text-gray-400 hover:text-white">TikTok</Link></li>
-                                    <li><Link href="#" className="text-base leading-6 text-gray-400 hover:text-white">Kawai</Link></li>
-                                    <li><Link href="#" className="text-base leading-6 text-gray-400 hover:text-white">Instagram</Link></li>
+                                    <li><Link href="https://www.tiktok.com/@casadosnutrientes?_t=8ecUmNQisJq&_r=1" className="text-base leading-6 text-gray-400 hover:text-white">TikTok</Link></li>
+                                    <li><Link href="https://k.kwai.com/u/@casadosnutrientes/FChPsWex" className="text-base leading-6 text-gray-400 hover:text-white">Kawai</Link></li>
+                                    <li><Link href="https://instagram.com/casadosnutrientes" className="text-base leading-6 text-gray-400 hover:text-white">Instagram</Link></li>
                                 </ul>
                             </div>
                             <div className="mt-12 md:mt-0">

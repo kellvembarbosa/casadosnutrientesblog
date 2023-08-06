@@ -129,8 +129,7 @@ const Post: React.FC<Data> = ({
                   instagramLink={ig_url}
                   kawaiLink={kawai_url}
                   tiktokLink={tiktok_url}
-                  youtubeLink={yt_url}
-                />
+                  youtubeLink={yt_url} />
               </div>
             </Modal>
           )}
