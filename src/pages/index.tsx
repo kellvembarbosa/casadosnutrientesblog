@@ -6,7 +6,6 @@ import Menu from '@/components/Menu';
 import { prisma } from '@/lib/prisma';
 import MainPageComponent from '@/components/MainPageComponent';
 import { indexKeywords } from '@/lib/tags';
-import { unstable_serialize as infinite_unstable_serialize } from 'swr/infinite' 
 
 interface IProps {
     fallback: {
