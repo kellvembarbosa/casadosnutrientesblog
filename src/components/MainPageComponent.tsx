@@ -73,7 +73,7 @@ const MainPageComponent: React.FC = () => {
     // const allPosts = data.flatMap((page: any) => page.posts);
 
     return (
-        <div className='bg-white'>{data.posts[0].title}</div>
+        <div className='bg-white'>{fallback['/api/posts'].title}</div>
         // <main className="bg-gray-800 min-h-screen">
         //     <div className="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
         //         <h1 className="text-4xl text-center font-bold text-white">
