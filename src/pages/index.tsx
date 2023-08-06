@@ -7,7 +7,11 @@ import { prisma } from '@/lib/prisma';
 import MainPageComponent from '@/components/MainPageComponent';
 import { indexKeywords } from '@/lib/tags';
 
-const Blog: NextPage = (fallback) => {
+interface IProps {
+    fallback: any
+}
+
+const Blog: NextPage<IProps> = ({ fallback }) => {
     return (
         <>
             <Head>
@@ -21,7 +25,7 @@ const Blog: NextPage = (fallback) => {
             </Head>
             <Menu />
             <SWRConfig value={{ fallback }}>
-                <MainPageComponent />
+                <MainPageComponent fallback={fallback} />
             </SWRConfig>
             <Footer />
         </>

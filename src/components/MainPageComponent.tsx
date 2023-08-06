@@ -21,9 +21,11 @@ interface Data {
 
 const fetcher = async (url: string) => await fetch(url).then((res) => res.json());
 
+interface Iprops {
+    fallback: any
+}
 
-
-const MainPageComponent: React.FC = () => {
+const MainPageComponent: React.FC<Iprops> = ({ fallback }) => {
     const getKey = (pageIndex: number, previousPageData: Data) => {
         if (previousPageData && previousPageData.posts.length === 0) {
             {
@@ -44,7 +46,8 @@ const MainPageComponent: React.FC = () => {
             refreshInterval: 1800000,
             revalidateOnFocus: false,
             revalidateOnReconnect: false,
-            revalidateIfStale: false
+            revalidateIfStale: false,
+            fallback: fallback
         });
     if (error) return <div>An error occurred.</div>;
     if (!data) return <div className='min-h-screen'>
