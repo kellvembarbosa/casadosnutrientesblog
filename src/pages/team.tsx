@@ -23,8 +23,8 @@ const Equipe = ({
                     }
                 </Head>
                 <Menu />
-                <div className="container mx-auto flex-grow m-5 bg-gray-900 rounded-lg overflow-hidden shadow-lg">
-                    <h1 className="text-white text-3xl text-center font-bold my-8">Equipe</h1>
+                <div className="mx-auto min-h-screen m-5 bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                    <h1 className="text-white text-3xl text-center font-bold my-4">Equipe</h1>
                     {
                         authors.map((author) => (
                             <Author

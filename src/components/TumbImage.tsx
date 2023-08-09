@@ -20,7 +20,7 @@ const TumbImage = (props: Iprops) => {
     const {post } = props
 
     return (
-        <div className="relative w-full h-80 bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+        <article className="relative w-full h-80 bg-gray-900 rounded-lg overflow-hidden shadow-lg">
             <div style={{ width: '100%', height: '50%', position: 'relative' }}>
                 <Image
                     alt={''}
@@ -49,7 +49,7 @@ const TumbImage = (props: Iprops) => {
                     <p className="text-gray-400 line-clamp-3">{post.content}</p>
                 </div>
             </div>
-        </div>
+        </article>
     )
 }
 

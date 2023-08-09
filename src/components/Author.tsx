@@ -9,23 +9,23 @@ interface AuthorProps {
 
 const Author: React.FC<AuthorProps> = ({ name, tumb, description }) => {
   return (
-    <div className="flex justify-center h-full">
-      <div className='flex justify-center items-center h-64 w-64'>
+    <div className="flex sm:flex-row flex-col justify-center items-center mt-8">
+      <div className='flex justify-center items-center'>
         <div className="flex rounded-full h-36 w-36 overflow-hidden">
           <Image src={tumb} alt={name} width={150} height={150} placeholder='blur'
             blurDataURL={tumb} />
         </div>
       </div>
-      <div className='flex items-center justify-center  h-64 w-4/5'>
+      <div className='flex mx-2 justify-center items-center'>
         <div className='flex flex-col'>
           <h2 className="text-gray-100 text-lg mt-2 text-center">{name}</h2>
-          <p className="text-gray-400 text-base my-4 text-center">{description}</p>
+          <p className="text-gray-400 text-base my-2 text-center">{description}</p>
         </div>
       </div>
-
     </div>
-  );
+  );  
 };
+
 
 export default Author;
 
