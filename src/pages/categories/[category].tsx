@@ -129,12 +129,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const getPaths = await prisma.category.findMany({
         select: {
             slug: true
-        }
+        },
+        take: 5
     })
 
     const paths = getPaths.map(path => ({
         params: { category: path.slug! },
     }))
 
-    return { paths, fallback: false };
+    return { paths, fallback: true };
 }

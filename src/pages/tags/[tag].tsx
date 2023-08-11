@@ -133,12 +133,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
         select: {
             tag: true,
             slug: true
-        }
+        },
+        take: 5
     })
 
     const paths = getPaths.map(path => ({
         params: { tag: path.slug! },
     }))
 
-    return { paths, fallback: false };
+    return { paths, fallback: true };
 }

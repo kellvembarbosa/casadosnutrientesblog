@@ -116,7 +116,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const getPaths = await prisma.post.findMany({
     select: {
       slug: true,
-    }
+    },
+    take: 5
   })
 
 
@@ -132,7 +133,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     })
   })
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 export default PostPage;
