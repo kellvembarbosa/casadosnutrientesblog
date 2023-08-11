@@ -7,6 +7,8 @@ import Head from 'next/head'
 import Footer from '@/components/Footer'
 import Menu from '@/components/Menu'
 import { indexKeywords } from '@/lib/tags'
+import { useRouter } from 'next/router'
+import Loader from '@/components/Loader'
 
 type PostsType = {
     serializabledPost: {
@@ -25,6 +27,12 @@ type PostsType = {
 }
 
 const TagPage: NextPage<PostsType> = ({ serializabledPost, nameTag }) => {
+    const router = useRouter();
+
+    if (router.isFallback) {
+        // Esta página está em modo fallback e ainda está sendo gerada.
+        return <Loader />;
+    }
     return (
         <>
             <Head>

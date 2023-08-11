@@ -4,6 +4,7 @@ import { PacmanLoader } from 'react-spinners';
 import useSWRInfinite from 'swr/infinite';
 import { author } from '@prisma/client';
 import { useSWRConfig } from 'swr';
+import Loader from './Loader';
 
 interface Post {
     idpost: number;
@@ -47,22 +48,8 @@ const MainPageComponent: React.FC = () => {
         });
 
     if (error) return <div className='bg-white'>An error occurred.</div>;
-    if (!data) return <div className='min-h-screen'>
-        <PacmanLoader color="white" cssOverride={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-        }}></PacmanLoader>
-    </div>;
-    if (isLoading) return <div className='min-h-screen'>
-        <PacmanLoader color="white" cssOverride={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-        }}></PacmanLoader>
-    </div>;
+    if (!data) return <Loader />;
+    if (isLoading) return <Loader />
 
     const allPosts = data.flatMap((page: any) => page.posts);
 

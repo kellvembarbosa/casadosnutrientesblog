@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma'
 import loadPosts from '../../lib/loadPosts'
 import Post from '@/components/Post';
 import { author } from '@prisma/client';
+import { useRouter } from 'next/router';
+import Loader from '@/components/Loader';
 
 interface Data {
   post: {
@@ -42,8 +44,15 @@ type PropsPost = {
 
 // const PostPage: NextPage<PropsPost> = ({resPostPage}) 
 const PostPage: NextPage<PropsPost> = ({ resPostPage, relatedPosts }) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    // Esta página está em modo fallback e ainda está sendo gerada.
+    return <Loader />;
+  }
   const { post } = resPostPage
   const { title, author, created_at, content, ig_url, kawai_url, tiktok_url, yt_url, post_has_tag, image, category, } = post
+ 
   return (
     <Post
       title={title}
@@ -70,6 +79,7 @@ export const getStaticProps = async ({ params }: { params: MyGetStaticProps }) =
   try {
     const { post } = params
     const resPostPage = await loadPosts(post)
+    console.log(resPostPage); 
     const { category } = resPostPage.post
     const getRelatedPosts = async () => {
       try {
