@@ -37,7 +37,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         } else {
             pathSlug = encodeURIComponent(path ?? `${process.env.NEXT_PUBLIC_BASE_API_URL}`)
         }
-        return (`${process.env.NEXT_PUBLIC_BASE_API_URL}/${pathSlug}`)
+        return (`${process.env.NEXT_PUBLIC_BASE_API_URL}/posts/${pathSlug}`)
     })
 
     paths.push(`${process.env.NEXT_PUBLIC_BASE_API_URL}`)

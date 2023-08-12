@@ -22,8 +22,9 @@ const Blog: NextPage<IProps> = ({ fallback }) => {
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                 <meta name="description" content="Na Casa dos Nutrientes, descubra como otimizar suas refeições com uma alimentação saudável, incorporando creatina, whey protein e outros nutrientes, seguindo a pirâmide alimentar. Aprenda receitas saudáveis e a dieta ideal para ganhar massa muscular com o suporte de suplementos de alta qualidade." />
                 {
-                     <meta name="keywords" content={indexKeywords} />
+                    <meta name="keywords" content={indexKeywords} />
                 }
+                <meta name="robots" content="max-image-preview:large"></meta>
             </Head>
             <Menu />
             <SWRConfig value={{ fallback }}>
